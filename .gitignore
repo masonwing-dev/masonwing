@@ -10,7 +10,10 @@ plans/
 inputs/
 **/inputs/**
 
-# Gleanbird proprietary product (isolated in private repo)
+# Requirements baselines (isolated in private repositories)
+*-requirements-*/
+*-requirements-v1.0.1/
+masonwing-requirements-v1.0.1/
 gleanbird-requirements-v1.0.1/
 products/gleanbird/
 contracts/gleanbird/

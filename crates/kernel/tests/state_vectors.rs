@@ -22,7 +22,7 @@ struct StateVector {
 #[test]
 fn runtime_state_oracle_executes_all_immutable_baseline_vectors() {
     let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../masonwing-requirements-v1.0.1/06-testing/state-vectors.json");
+        .join("../../contracts/masonwing/state-vectors.json");
     let bytes = fs::read(&path).expect("immutable state vector fixture is readable");
     let fixture: StateVectorFile =
         serde_json::from_slice(&bytes).expect("immutable state vector fixture parses");
