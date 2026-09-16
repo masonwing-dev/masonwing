@@ -1,0 +1,36 @@
+{
+  "change_request": "CR-BRAND-001",
+  "spec_version": "1.0.1",
+  "contract_version": "1.0.0",
+  "decision_source": "SRC-CHAT-BRAND",
+  "changes": [
+    {
+      "kind": "framework",
+      "previous_name": "Kernivo",
+      "current_name": "Masonwing",
+      "previous_namespace": "KERNIVO@1.0.0",
+      "current_namespace": "MASONWING@1.0.1",
+      "previous_slug": "kernivo",
+      "current_slug": "masonwing"
+    },
+    {
+      "kind": "marketing_product",
+      "previous_name": "Evidemand",
+      "current_name": "Gleanbird",
+      "previous_namespace": "EVIDEMAND@1.0.0",
+      "current_namespace": "GLEANBIRD@1.0.1",
+      "previous_slug": "evidemand",
+      "current_slug": "gleanbird"
+    }
+  ],
+  "local_ids": "All F/REQ/AC/NFR/ADR/TC/TS IDs remain unchanged; prefix/version migration applies only to namespaced references.",
+  "compatibility": "Documentation rebrand before implementation. No runtime aliases or deployed migration are claimed. Shared schema URNs and file paths change with the brand; wire contract shape/version remains 1.0.0. Upgrade both spec bundles together.",
+  "historical_name_locations": [
+    "inputs/",
+    "09-audit/history/",
+    "08-governance/BRAND-MIGRATION.md",
+    "08-governance/brand-aliases.json",
+    "09-audit/branding-validation.json"
+  ],
+  "clearance_status": "NOT_VERIFIED; existing Q-006 remains open"
+}

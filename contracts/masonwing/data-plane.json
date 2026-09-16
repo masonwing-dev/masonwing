@@ -1,0 +1,43 @@
+{
+  "contract_version": "1.0.0",
+  "endpoints": [
+    {
+      "method": "PUT",
+      "path": "/v1/tenants/{tenant_id}/uploads/{upload_id}",
+      "request": "binary bytes; Content-Type declared at begin",
+      "response": "204 after durable temp upload; not final artifact",
+      "guards": [
+        "current authorization",
+        "tenant upload binding",
+        "size and checksum",
+        "single upload session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tenants/{tenant_id}/artifacts/{artifact_id}/content",
+      "response": "authorized bytes + Content-Type + ETag digest",
+      "guards": [
+        "current artifact/source authorization",
+        "restricted proxy-only",
+        "no-store for sensitive content"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tenants/{tenant_id}/runs",
+      "request_schema": "Command_run_start",
+      "alias_for": "run.start",
+      "response_schema": "CommandReceipt"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/tenants/{tenant_id}/runs/{run_id}",
+      "response_schema": "Run",
+      "guards": [
+        "current tenant and resource auth"
+      ]
+    }
+  ],
+  "note": "Data plane is specified in masonwing-platform.openapi.json. Marketing consumes these Masonwing endpoints,not duplicate handlers."
+}

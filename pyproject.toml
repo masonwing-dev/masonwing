@@ -1,0 +1,18 @@
+[project]
+name = "masonwing-development-tools"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests/scaffold"]
+addopts = "-ra --strict-markers"
+pythonpath = ["."]
+markers = [
+  "acceptance: full product oracles; unimplemented cases must fail",
+  "integration: requires the local Compose services",
+]
+
+[tool.ruff]
+line-length = 110
+exclude = ["masonwing-requirements-v1.0.1", "gleanbird-requirements-v1.0.1"]

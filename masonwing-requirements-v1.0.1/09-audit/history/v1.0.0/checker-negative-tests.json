@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "scope": "SPEC_CHECKER_ONLY_NOT_PRODUCT",
+  "mutations": [
+    {
+      "mutation": "remove_criterion",
+      "expected": "NONZERO_EXIT",
+      "actual_exit_code": 1,
+      "detected": true,
+      "output_excerpt": "EVIDEMAND: FAIL; 5307 document checks; 5 failures; product tests=0\nFAIL: metadata count acceptance criteria 144\nFAIL: REQ->AC REQ-145 \nFAIL: trace all criteria \nFAIL: phase criteria M2 \nFAIL: work package criterion coverage \n"
+    },
+    {
+      "mutation": "fake_product_pass",
+      "expected": "NONZERO_EXIT",
+      "actual_exit_code": 1,
+      "detected": true,
+      "output_excerpt": "EVIDEMAND: FAIL; 5308 document checks; 1 failures; product tests=0\nFAIL: product tests honestly not run \n"
+    },
+    {
+      "mutation": "alter_contract_lock",
+      "expected": "NONZERO_EXIT",
+      "actual_exit_code": 1,
+      "detected": true,
+      "output_excerpt": "EVIDEMAND: FAIL; 5308 document checks; 1 failures; product tests=0\nFAIL: contract digest pinned \n"
+    },
+    {
+      "mutation": "flip_transition_oracle",
+      "expected": "NONZERO_EXIT",
+      "actual_exit_code": 1,
+      "detected": true,
+      "output_excerpt": "EVIDEMAND: FAIL; 5308 document checks; 1 failures; product tests=0\nFAIL: transition oracle source \n"
+    },
+    {
+      "mutation": "broken_openapi_ref",
+      "expected": "NONZERO_EXIT",
+      "actual_exit_code": 1,
+      "detected": true,
+      "output_excerpt": "EVIDEMAND: FAIL; 5309 document checks; 1 failures; product tests=0\nFAIL: resolved reference 03-contracts/openapi.json/components/schemas/CommandReceipt/properties/resource 'NonexistentType'\n"
+    }
+  ]
+}

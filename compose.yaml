@@ -1,0 +1,246 @@
+name: masonwing-dev
+
+x-runtime: &runtime
+  image: masonwing-dev-runtime:scaffold
+  build:
+    context: .
+    dockerfile: infra/docker/rust.Dockerfile
+  restart: unless-stopped
+  init: true
+  read_only: true
+  tmpfs: ["/tmp:rw,noexec,nosuid,size=64m"]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  mem_limit: 384m
+  cpus: 1.0
+  environment: &runtime-env
+    MASONWING_ENV: LOCAL
+    MASONWING_BIND_ADDR: 0.0.0.0:8080
+    MASONWING_EXTERNAL_MUTATIONS: "false"
+    MASONWING_LIVE_BUDGET_MICROUNITS: "0"
+    DATABASE_URL: postgres://masonwing_app:masonwing-local-app@postgres:5432/masonwing
+    TEMPORAL_ADDRESS: temporal:7233
+    TEMPORAL_NAMESPACE: masonwing-local
+    OIDC_ISSUER: http://localhost:39853/realms/masonwing
+    OIDC_INTERNAL_BASE_URL: http://keycloak:8080
+    OIDC_CLIENT_ID: masonwing-local-bff
+    OIDC_REDIRECT_URI: http://localhost:39850/auth/callback
+    S3_ENDPOINT: http://storage:9000
+    S3_BUCKET: masonwing-artifacts-local
+    BAO_ADDR: http://openbao:8200
+    PROVIDER_MODE: MOCK
+    PROVIDER_FIXTURE_URL: http://provider-fixtures:8080
+  healthcheck:
+    test: [CMD, python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health/live',timeout=2)"]
+    interval: 10s
+    timeout: 3s
+    retries: 5
+    start_period: 15s
+
+services:
+  gateway:
+    image: haproxy@sha256:6343ce34a132a5dceaa24767d739df2bd519f8f7c1079ae39e4821334e8eb42e
+    restart: unless-stopped
+    read_only: true
+    user: "99:99"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    volumes: ["./infra/gateway/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"]
+    networks: [default, edge]
+    ports:
+      - "127.0.0.1:39850:39850"
+      - "127.0.0.1:39851:39851"
+      - "127.0.0.1:39852:39852"
+      - "127.0.0.1:39853:39853"
+      - "127.0.0.1:39854:39854"
+      - "127.0.0.1:39855:39855"
+      - "127.0.0.1:39856:39856"
+      - "127.0.0.1:39857:39857"
+      - "127.0.0.1:39858:39858"
+      - "127.0.0.1:39859:39859"
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8404/health]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    mem_limit: 64m
+    cpus: 0.5
+
+  postgres:
+    image: postgres@sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: masonwing_admin
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:-masonwing-local-admin}
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/00-init.sql:ro
+      - ./infra/migrations:/migrations:ro
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U masonwing_admin -d masonwing"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    mem_limit: 512m
+    cpus: 1.5
+
+  keycloak:
+    image: quay.io/keycloak/keycloak@sha256:29be7252db0a106f1cd2ac17b9a56ff2668073da645638a38b9fc67deeb2d6c4
+    command: [start-dev, --import-realm]
+    restart: unless-stopped
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-masonwing-local-admin}
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/masonwing_keycloak
+      KC_DB_USERNAME: masonwing_keycloak
+      KC_DB_PASSWORD: masonwing-local-keycloak
+      KC_HOSTNAME: http://localhost:39853
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+      KC_HTTP_ENABLED: "true"
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+      JAVA_OPTS_KC_HEAP: -Xms128m -Xmx512m
+    volumes: ["./infra/keycloak/masonwing-realm.json:/opt/keycloak/data/import/masonwing-realm.json:ro"]
+    depends_on:
+      postgres: {condition: service_healthy}
+    healthcheck:
+      test: [CMD-SHELL, "bash -c 'exec 3<>/dev/tcp/127.0.0.1/9000; printf \"GET /health/ready HTTP/1.0\\r\\n\\r\\n\" >&3; grep -q \"200\" <&3'"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 45s
+    mem_limit: 896m
+    cpus: 1.5
+
+  temporal:
+    image: temporalio/temporal@sha256:ad4c82c97bd12b417d1ea942610dbcd511afb250c4d5ed26c694009533df447e
+    command: [server, start-dev, --ip, 0.0.0.0, --port, "7233", --ui-port, "8233", --db-filename, /home/temporal/masonwing.db, --namespace, masonwing-local, --namespace, gleanbird-local]
+    restart: unless-stopped
+    volumes: [temporal-data:/home/temporal]
+    healthcheck:
+      test: [CMD, temporal, operator, cluster, health, --address, 127.0.0.1:7233]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    mem_limit: 768m
+    cpus: 1.5
+
+  storage:
+    image: minio/minio@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+    command: [server, /data, --console-address, ":9001"]
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-masonwing-local}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-masonwing-local-storage}
+      MINIO_BROWSER_REDIRECT_URL: http://localhost:39857
+    volumes: [storage-data:/data]
+    healthcheck:
+      test: [CMD, curl, -f, http://127.0.0.1:9000/minio/health/live]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    mem_limit: 512m
+    cpus: 1.0
+
+  openbao:
+    image: openbao/openbao@sha256:900bb64d0671cd1d82b693c56206f7263b582445f3a3bb6ba6e5213f524a6653
+    command: [server, -dev, -dev-listen-address=0.0.0.0:8200]
+    restart: unless-stopped
+    cap_add: [IPC_LOCK]
+    environment:
+      BAO_DEV_ROOT_TOKEN_ID: ${BAO_DEV_ROOT_TOKEN_ID:-masonwing-local-root}
+      BAO_ADDR: http://127.0.0.1:8200
+    healthcheck:
+      test: [CMD, bao, status]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    mem_limit: 256m
+    cpus: 0.75
+
+  provider-fixtures:
+    image: masonwing-dev-provider-fixtures:scaffold
+    build: {context: ., dockerfile: infra/docker/provider.Dockerfile}
+    restart: unless-stopped
+    init: true
+    volumes: [provider-data:/data]
+    read_only: true
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=16m"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    mem_limit: 96m
+    cpus: 0.5
+
+  api:
+    <<: *runtime
+    command: [masonwing-host-api]
+    depends_on:
+      postgres: {condition: service_healthy}
+      keycloak: {condition: service_healthy}
+      temporal: {condition: service_healthy}
+      storage: {condition: service_healthy}
+      openbao: {condition: service_healthy}
+      provider-fixtures: {condition: service_healthy}
+
+  worker:
+    <<: *runtime
+    command: [masonwing-worker]
+    depends_on:
+      api: {condition: service_healthy}
+
+  component-runner:
+    <<: *runtime
+    command: [masonwing-component-runner]
+    depends_on:
+      api: {condition: service_healthy}
+
+  remote-runner:
+    <<: *runtime
+    command: [masonwing-remote-runner]
+    depends_on:
+      api: {condition: service_healthy}
+
+  web:
+    image: masonwing-dev-web:scaffold
+    build: {context: ., dockerfile: infra/docker/web.Dockerfile}
+    restart: unless-stopped
+    init: true
+    environment:
+      MASONWING_API_URL: http://api:8080
+    volumes:
+      - ./packages/web-shell/src:/workspace/packages/web-shell/src:ro
+      - ./packages/ui/src:/workspace/packages/ui/src:ro
+      - ./packages/plugin-sdk/src:/workspace/packages/plugin-sdk/src:ro
+      - ./packages/api-client/src:/workspace/packages/api-client/src:ro
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:5173/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 1.0
+
+networks:
+  default:
+    name: masonwing-dev-local
+    internal: true
+  edge:
+    name: masonwing-dev-edge
+
+volumes:
+  postgres-data:
+  temporal-data:
+  storage-data:
+  provider-data:

@@ -1,0 +1,36 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Internal plans, reports & research inputs
+plans/
+**/plans/**
+*.plan
+inputs/
+**/inputs/**
+
+# Gleanbird proprietary product (isolated in private repo)
+gleanbird-requirements-v1.0.1/
+products/gleanbird/
+contracts/gleanbird/
+
+# Build outputs & dependencies
+target/
+node_modules/
+dist/
+coverage/
+.pnpm-store/
+*.tsbuildinfo
+
+# Python & testing
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+playwright-report/
+test-results/
+
+# Local developer evidence & system
+.dev/
+.DS_Store

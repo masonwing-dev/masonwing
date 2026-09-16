@@ -1,0 +1,1390 @@
+{
+  "purpose": "valid wire syntax samples,not live business records or product evidence",
+  "examples": {
+    "OpaqueId": "fixture_value",
+    "Digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "Timestamp": "2026-09-16T00:00:00Z",
+    "Version": "1.0.0",
+    "ArtifactRef": {
+      "artifact_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "schema_version": "1.0.0",
+      "classification": "PUBLIC"
+    },
+    "ResourceRef": {
+      "resource_type": "fixture_value",
+      "resource_id": "fixture_value",
+      "version": 1
+    },
+    "PrincipalRef": {
+      "type": "USER",
+      "id": "fixture_value",
+      "issuer": "https://fixture.example.test/resource"
+    },
+    "DecisionContext": {
+      "tenant_id": "fixture_value",
+      "principal": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "action": "fixture_value",
+      "resource": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "policy_version": "1.0.0",
+      "evaluated_at": "2026-09-16T00:00:00Z",
+      "decision": "ALLOW",
+      "diagnostic_codes": [
+        "fixture_value"
+      ]
+    },
+    "RunContext": {
+      "tenant_id": "fixture_value",
+      "run_id": "fixture_value",
+      "trace_id": "fixture_value",
+      "principal": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "delegation_id": "fixture_value",
+      "plugin_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "workflow_version": "1.0.0",
+      "fence": 1,
+      "deadline": "2026-09-17T00:00:00Z",
+      "grant_actions": [
+        "fixture_value"
+      ],
+      "evidence_refs": [
+        {
+          "artifact_id": "fixture_value",
+          "tenant_id": "fixture_value",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "1.0.0",
+          "classification": "PUBLIC"
+        }
+      ]
+    },
+    "Error": {
+      "code": "fixture_value",
+      "message": "fixture_value",
+      "correlation_id": "fixture_value",
+      "effect_state": "NOT_SENT",
+      "retryable": true,
+      "recovery_action": "NONE",
+      "details": [
+        {
+          "field": "fixture_value",
+          "reason": "fixture_value"
+        }
+      ]
+    },
+    "CommandReceipt": {
+      "command_id": "fixture_value",
+      "state": "ACCEPTED",
+      "resource": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "run_id": "fixture_value",
+      "effect_id": "fixture_value",
+      "correlation_id": "fixture_value",
+      "accepted_at": "2026-09-16T00:00:00Z"
+    },
+    "EventEnvelope": {
+      "event_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "type": "fixture_value",
+      "schema_version": "1.0.0",
+      "aggregate": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "sequence": 1,
+      "occurred_at": "2026-09-16T00:00:00Z",
+      "trace_id": "fixture_value",
+      "payload_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "ApprovalBinding": {
+      "proposal_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "action": "fixture_value",
+      "target": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "scope_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "policy_version": "1.0.0",
+      "expires_at": "2026-09-17T00:00:00Z",
+      "approved_by": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "max_cost_microunits": 1,
+      "currency": "USD"
+    },
+    "EffectIntent": {
+      "effect_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "run_id": "fixture_value",
+      "action": "fixture_value",
+      "connection_id": "fixture_value",
+      "target": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "content_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "fingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "idempotency_key": "fixture_value",
+      "approval_id": "fixture_value",
+      "reservation_id": "fixture_value",
+      "state": "PREPARED",
+      "version": 1,
+      "created_at": "2026-09-16T00:00:00Z"
+    },
+    "EffectReceipt": {
+      "receipt_id": "fixture_value",
+      "effect_id": "fixture_value",
+      "outcome": "SUCCEEDED",
+      "remote_id": "fixture_value",
+      "remote_version": "fixture_value",
+      "remote_url": "https://fixture.example.test/resource",
+      "evidence_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "observed_at": "2026-09-16T00:00:00Z",
+      "provider_contract_version": "1.0.0"
+    },
+    "CostReservation": {
+      "reservation_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "run_id": "fixture_value",
+      "currency": "USD",
+      "upper_bound_microunits": 1,
+      "settled_microunits": 1,
+      "state": "RESERVED",
+      "price_profile": "1.0.0",
+      "version": 1
+    },
+    "Connection": {
+      "connection_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "provider": "fixture_value",
+      "external_account": "fixture_value",
+      "scopes": [
+        "fixture_value"
+      ],
+      "secret_ref": "fixture_value",
+      "state": "PENDING",
+      "contract_version": "1.0.0",
+      "capabilities": [
+        "fixture_value"
+      ],
+      "verified_at": "2026-09-16T00:00:00Z",
+      "version": 1
+    },
+    "PluginDependency": {
+      "plugin_id": "fixture_value",
+      "contract_range": "fixture_value",
+      "optional": true
+    },
+    "UIContribution": {
+      "id": "fixture_value",
+      "slot": "NAVIGATION",
+      "path": "fixture_value",
+      "ui_contract_version": "1.0.0",
+      "trust": "TRUSTED_BUNDLE",
+      "required_action": "fixture_value"
+    },
+    "PluginManifest": {
+      "id": "fixture_value",
+      "version": "1.0.0",
+      "contract_version": "1.0.0",
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "publisher_id": "fixture_value",
+      "execution_class": "TRUSTED_NATIVE",
+      "requested_capabilities": [
+        "fixture_value"
+      ],
+      "dependencies": [
+        {
+          "plugin_id": "fixture_value",
+          "contract_range": "fixture_value",
+          "optional": true
+        }
+      ],
+      "ui": [
+        {
+          "id": "fixture_value",
+          "slot": "NAVIGATION",
+          "path": "fixture_value",
+          "ui_contract_version": "1.0.0",
+          "trust": "TRUSTED_BUNDLE",
+          "required_action": "fixture_value"
+        }
+      ],
+      "migrations": [
+        {
+          "id": "fixture_value",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "compatibility": "ADDITIVE",
+          "reversible": true
+        }
+      ],
+      "license_expression": "fixture_value",
+      "sbom_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "signature_ref": "fixture_value",
+      "handlers": [
+        {
+          "id": "fixture_value",
+          "input_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "output_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "effects": "READ_ONLY",
+          "required_capabilities": [
+            "fixture_value"
+          ],
+          "max_execution_seconds": 1
+        }
+      ],
+      "workflows": [
+        {
+          "artifact_id": "fixture_value",
+          "tenant_id": "fixture_value",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "1.0.0",
+          "classification": "PUBLIC"
+        }
+      ],
+      "data_contracts": [
+        {
+          "artifact_id": "fixture_value",
+          "tenant_id": "fixture_value",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "1.0.0",
+          "classification": "PUBLIC"
+        }
+      ],
+      "tools": [
+        {
+          "id": "fixture_value",
+          "version": "1.0.0",
+          "input_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "output_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "action": "fixture_value",
+          "effect_class": "READ_ONLY",
+          "connection_provider": "fixture_value",
+          "trust": "FIRST_PARTY"
+        }
+      ]
+    },
+    "ProviderProfile": {
+      "id": "fixture_value",
+      "provider": "fixture_value",
+      "model": "fixture_value",
+      "adapter_version": "1.0.0",
+      "capabilities": [
+        "fixture_value"
+      ],
+      "continuation_mode": "MANUAL_HISTORY",
+      "compaction_mode": "NONE",
+      "max_turns": 1,
+      "max_output_tokens": 1,
+      "wall_clock_seconds": 1,
+      "allowed_data_classes": [
+        "PUBLIC"
+      ],
+      "region_policy": "fixture_value",
+      "retention_policy": "fixture_value",
+      "price_profile": "1.0.0",
+      "live_status": "DISABLED"
+    },
+    "ProviderNativeEnvelope": {
+      "provider": "fixture_value",
+      "adapter_version": "1.0.0",
+      "model": "fixture_value",
+      "conversation_id": "fixture_value",
+      "output": [
+        {}
+      ],
+      "continuation_mode": "MANUAL_HISTORY",
+      "previous_response_id": "fixture_value",
+      "usage_state": "KNOWN",
+      "encrypted_store_ref": "fixture_value"
+    },
+    "CapabilityReport": {
+      "subject_id": "fixture_value",
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "contract_version": "1.0.0",
+      "environment": "MOCK",
+      "results": [
+        {
+          "capability": "fixture_value",
+          "status": "PASS",
+          "evidence_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "generated_at": "2026-09-16T00:00:00Z",
+      "review_state": "PENDING"
+    },
+    "SessionView": {
+      "authenticated": true,
+      "principal": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "tenant_ids": [
+        "fixture_value"
+      ],
+      "active_tenant_id": "fixture_value",
+      "expires_at": "2026-09-17T00:00:00Z",
+      "step_up_expires_at": "2026-09-17T00:00:00Z",
+      "csrf_token": "fixture_value"
+    },
+    "SourceRights": {
+      "rights_id": "fixture_value",
+      "access_mode": "FIRST_PARTY",
+      "allow_acquire": true,
+      "allow_ai_analysis": true,
+      "allow_transform": true,
+      "allow_public_redistribution": true,
+      "allowed_provider_profiles": [
+        "fixture_value"
+      ],
+      "expires_at": "2026-09-17T00:00:00Z",
+      "evidence_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "version": 1
+    },
+    "ReadCollection": {
+      "items": [
+        {
+          "resource_type": "fixture_value",
+          "resource_id": "fixture_value",
+          "version": 1
+        }
+      ],
+      "next_cursor": "fixture_value",
+      "snapshot_at": "2026-09-16T00:00:00Z",
+      "data_state": "FRESH",
+      "total_visible": 1
+    },
+    "ResourceProjection": {
+      "resource": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "artifact_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "updated_at": "2026-09-16T00:00:00Z",
+      "data_state": "FRESH"
+    },
+    "Run": {
+      "run_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "workflow_id": "fixture_value",
+      "workflow_version": "1.0.0",
+      "state": "QUEUED",
+      "plugin_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "grant_id": "fixture_value",
+      "version": 1,
+      "created_at": "2026-09-16T00:00:00Z",
+      "updated_at": "2026-09-16T00:00:00Z"
+    },
+    "Membership": {
+      "membership_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "principal_id": "fixture_value",
+      "roles": [
+        "fixture_value"
+      ],
+      "state": "INVITED",
+      "version": 1
+    },
+    "Delegation": {
+      "grant_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "principal": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "actions": [
+        "fixture_value"
+      ],
+      "resources": [
+        {
+          "resource_type": "fixture_value",
+          "resource_id": "fixture_value",
+          "version": 1
+        }
+      ],
+      "expires_at": "2026-09-17T00:00:00Z",
+      "parent_grant_id": "fixture_value",
+      "state": "ACTIVE",
+      "version": 1
+    },
+    "HandlerContract": {
+      "id": "fixture_value",
+      "input_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "output_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "effects": "READ_ONLY",
+      "required_capabilities": [
+        "fixture_value"
+      ],
+      "max_execution_seconds": 1
+    },
+    "WorkflowNode": {
+      "id": "fixture_value",
+      "kind": "DETERMINISTIC",
+      "handler_id": "fixture_value",
+      "input_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "output_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "max_attempts": 1,
+      "timeout_seconds": 1,
+      "max_iterations": 1,
+      "on_failure": "BLOCK"
+    },
+    "WorkflowDefinition": {
+      "id": "fixture_value",
+      "version": "1.0.0",
+      "input_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "output_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "entry_node": "fixture_value",
+      "nodes": [
+        {
+          "id": "fixture_value",
+          "kind": "DETERMINISTIC",
+          "handler_id": "fixture_value",
+          "input_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "output_schema_ref": {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          },
+          "max_attempts": 1,
+          "timeout_seconds": 1,
+          "max_iterations": 1,
+          "on_failure": "BLOCK"
+        }
+      ],
+      "edges": [
+        {
+          "from": "fixture_value",
+          "to": "fixture_value",
+          "condition": "SUCCESS"
+        }
+      ],
+      "max_total_steps": 1,
+      "max_model_turns": 1,
+      "required_actions": [
+        "fixture_value"
+      ],
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "ToolDescriptor": {
+      "id": "fixture_value",
+      "version": "1.0.0",
+      "input_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "output_schema_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "action": "fixture_value",
+      "effect_class": "READ_ONLY",
+      "connection_provider": "fixture_value",
+      "trust": "FIRST_PARTY"
+    },
+    "ToolInvocation": {
+      "invocation_id": "fixture_value",
+      "run_context": {
+        "tenant_id": "fixture_value",
+        "run_id": "fixture_value",
+        "trace_id": "fixture_value",
+        "principal": {
+          "type": "USER",
+          "id": "fixture_value",
+          "issuer": "https://fixture.example.test/resource"
+        },
+        "delegation_id": "fixture_value",
+        "plugin_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "workflow_version": "1.0.0",
+        "fence": 1,
+        "deadline": "2026-09-17T00:00:00Z",
+        "grant_actions": [
+          "fixture_value"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ]
+      },
+      "tool_id": "fixture_value",
+      "tool_version": "1.0.0",
+      "arguments_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "connection_id": "fixture_value",
+      "idempotency_key": "fixture_value"
+    },
+    "ToolResult": {
+      "invocation_id": "fixture_value",
+      "state": "SUCCEEDED",
+      "output_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "error": {
+        "code": "fixture_value",
+        "message": "fixture_value",
+        "correlation_id": "fixture_value",
+        "effect_state": "NOT_SENT",
+        "retryable": true,
+        "recovery_action": "NONE",
+        "details": [
+          {
+            "field": "fixture_value",
+            "reason": "fixture_value"
+          }
+        ]
+      },
+      "proposed_effect_id": "fixture_value"
+    },
+    "EvidenceRunRecord": {
+      "run_id": "fixture_value",
+      "test_suite_version": "1.0.0",
+      "candidate_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "fixture_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "config_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "environment": "MOCK",
+      "collected_count": 1,
+      "passed_count": 1,
+      "failed_count": 1,
+      "skipped_count": 1,
+      "started_at": "2026-09-16T00:00:00Z",
+      "ended_at": "2026-09-17T00:00:00Z",
+      "exit_code": 1,
+      "artifact_digests": [
+        "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "status": "PASS",
+      "independent_review": "PENDING"
+    },
+    "UploadSession": {
+      "upload_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "artifact_id": "fixture_value",
+      "upload_path": "fixture_value",
+      "expected_size_bytes": 1,
+      "expected_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_type": "fixture_value",
+      "expires_at": "2026-09-17T00:00:00Z",
+      "state": "OPEN"
+    },
+    "ConnectorAuthorization": {
+      "authorization_id": "fixture_value",
+      "tenant_id": "fixture_value",
+      "connection_id": "fixture_value",
+      "authorization_url": "https://fixture.example.test/resource",
+      "return_to": "fixture_value",
+      "expires_at": "2026-09-17T00:00:00Z",
+      "state": "PENDING"
+    },
+    "Command_product_compose": {
+      "product_id": "fixture_value",
+      "plugin_lock_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "Command_plugin_install": {
+      "manifest": {
+        "id": "fixture_value",
+        "version": "1.0.0",
+        "contract_version": "1.0.0",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "publisher_id": "fixture_value",
+        "execution_class": "TRUSTED_NATIVE",
+        "requested_capabilities": [
+          "fixture_value"
+        ],
+        "dependencies": [
+          {
+            "plugin_id": "fixture_value",
+            "contract_range": "fixture_value",
+            "optional": true
+          }
+        ],
+        "ui": [
+          {
+            "id": "fixture_value",
+            "slot": "NAVIGATION",
+            "path": "fixture_value",
+            "ui_contract_version": "1.0.0",
+            "trust": "TRUSTED_BUNDLE",
+            "required_action": "fixture_value"
+          }
+        ],
+        "migrations": [
+          {
+            "id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "compatibility": "ADDITIVE",
+            "reversible": true
+          }
+        ],
+        "license_expression": "fixture_value",
+        "sbom_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_ref": "fixture_value",
+        "handlers": [
+          {
+            "id": "fixture_value",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "effects": "READ_ONLY",
+            "required_capabilities": [
+              "fixture_value"
+            ],
+            "max_execution_seconds": 1
+          }
+        ],
+        "workflows": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "data_contracts": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "tools": [
+          {
+            "id": "fixture_value",
+            "version": "1.0.0",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "action": "fixture_value",
+            "effect_class": "READ_ONLY",
+            "connection_provider": "fixture_value",
+            "trust": "FIRST_PARTY"
+          }
+        ]
+      }
+    },
+    "Command_plugin_enable": {
+      "plugin_id": "fixture_value",
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "grants": [
+        "fixture_value"
+      ],
+      "expected_version": 1
+    },
+    "Command_plugin_disable": {
+      "plugin_id": "fixture_value",
+      "expected_version": 1,
+      "reason": "fixture_value"
+    },
+    "Command_plugin_upgrade": {
+      "plugin_id": "fixture_value",
+      "new_manifest": {
+        "id": "fixture_value",
+        "version": "1.0.0",
+        "contract_version": "1.0.0",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "publisher_id": "fixture_value",
+        "execution_class": "TRUSTED_NATIVE",
+        "requested_capabilities": [
+          "fixture_value"
+        ],
+        "dependencies": [
+          {
+            "plugin_id": "fixture_value",
+            "contract_range": "fixture_value",
+            "optional": true
+          }
+        ],
+        "ui": [
+          {
+            "id": "fixture_value",
+            "slot": "NAVIGATION",
+            "path": "fixture_value",
+            "ui_contract_version": "1.0.0",
+            "trust": "TRUSTED_BUNDLE",
+            "required_action": "fixture_value"
+          }
+        ],
+        "migrations": [
+          {
+            "id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "compatibility": "ADDITIVE",
+            "reversible": true
+          }
+        ],
+        "license_expression": "fixture_value",
+        "sbom_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_ref": "fixture_value",
+        "handlers": [
+          {
+            "id": "fixture_value",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "effects": "READ_ONLY",
+            "required_capabilities": [
+              "fixture_value"
+            ],
+            "max_execution_seconds": 1
+          }
+        ],
+        "workflows": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "data_contracts": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "tools": [
+          {
+            "id": "fixture_value",
+            "version": "1.0.0",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "action": "fixture_value",
+            "effect_class": "READ_ONLY",
+            "connection_provider": "fixture_value",
+            "trust": "FIRST_PARTY"
+          }
+        ]
+      },
+      "expected_version": 1
+    },
+    "Command_plugin_revoke": {
+      "plugin_id": "fixture_value",
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reason": "fixture_value"
+    },
+    "Command_plugin_uninstall": {
+      "plugin_id": "fixture_value",
+      "expected_version": 1,
+      "data_policy": "RETAIN"
+    },
+    "Command_plugin_invoke": {
+      "plugin_id": "fixture_value",
+      "handler": "fixture_value",
+      "input_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "grant_id": "fixture_value"
+    },
+    "Command_identity_configure": {
+      "issuer": "https://fixture.example.test/resource",
+      "client_id": "fixture_value",
+      "client_secret_ref": "fixture_value",
+      "allowed_redirect_uris": [
+        "https://fixture.example.test/resource"
+      ]
+    },
+    "Command_membership_invite": {
+      "email": "fixture@example.test",
+      "roles": [
+        "fixture_value"
+      ],
+      "expires_at": "2026-09-17T00:00:00Z"
+    },
+    "Command_membership_accept": {
+      "invite_token": "fixture_value"
+    },
+    "Command_membership_change": {
+      "membership_id": "fixture_value",
+      "roles": [
+        "fixture_value"
+      ],
+      "expected_version": 1
+    },
+    "Command_membership_revoke": {
+      "membership_id": "fixture_value",
+      "expected_version": 1,
+      "reason": "fixture_value"
+    },
+    "Command_policy_evaluate": {
+      "action": "fixture_value",
+      "resource": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      }
+    },
+    "Command_policy_propose": {
+      "policy_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "expected_version": 1,
+      "review_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "Command_grant_create": {
+      "delegate": {
+        "type": "USER",
+        "id": "fixture_value",
+        "issuer": "https://fixture.example.test/resource"
+      },
+      "actions": [
+        "fixture_value"
+      ],
+      "resources": [
+        {
+          "resource_type": "fixture_value",
+          "resource_id": "fixture_value",
+          "version": 1
+        }
+      ],
+      "expires_at": "2026-09-17T00:00:00Z",
+      "parent_grant_id": "fixture_value"
+    },
+    "Command_grant_revoke": {
+      "grant_id": "fixture_value",
+      "expected_version": 1,
+      "reason": "fixture_value"
+    },
+    "Command_artifact_begin": {
+      "classification": "PUBLIC",
+      "content_type": "fixture_value",
+      "size_bytes": 1,
+      "expected_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "Command_artifact_finalize": {
+      "artifact_id": "fixture_value",
+      "observed_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "Command_deletion_request": {
+      "resource": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "reason": "fixture_value",
+      "confirmation": "fixture_value"
+    },
+    "Command_run_start": {
+      "workflow_id": "fixture_value",
+      "workflow_version": "1.0.0",
+      "input_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "grant_id": "fixture_value"
+    },
+    "Command_run_cancel": {
+      "run_id": "fixture_value",
+      "expected_version": 1,
+      "reason": "fixture_value"
+    },
+    "Command_approval_decide": {
+      "proposal_id": "fixture_value",
+      "decision": "APPROVE",
+      "expected_version": 1,
+      "content_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reason": "fixture_value"
+    },
+    "Command_effect_propose": {
+      "action": "fixture_value",
+      "connection_id": "fixture_value",
+      "target": {
+        "resource_type": "fixture_value",
+        "resource_id": "fixture_value",
+        "version": 1
+      },
+      "content_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "grant_id": "fixture_value",
+      "price_profile": "1.0.0"
+    },
+    "Command_effect_dispatch": {
+      "effect_id": "fixture_value",
+      "expected_version": 1
+    },
+    "Command_effect_reconcile": {
+      "effect_id": "fixture_value",
+      "expected_version": 1
+    },
+    "Command_effect_compensate": {
+      "effect_id": "fixture_value",
+      "compensation_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "approval_id": "fixture_value"
+    },
+    "Command_budget_configure": {
+      "currency": "USD",
+      "limit_microunits": 1,
+      "period": "RUN",
+      "expected_version": 1
+    },
+    "Command_provider_configure": {
+      "profile": {
+        "id": "fixture_value",
+        "provider": "fixture_value",
+        "model": "fixture_value",
+        "adapter_version": "1.0.0",
+        "capabilities": [
+          "fixture_value"
+        ],
+        "continuation_mode": "MANUAL_HISTORY",
+        "compaction_mode": "NONE",
+        "max_turns": 1,
+        "max_output_tokens": 1,
+        "wall_clock_seconds": 1,
+        "allowed_data_classes": [
+          "PUBLIC"
+        ],
+        "region_policy": "fixture_value",
+        "retention_policy": "fixture_value",
+        "price_profile": "1.0.0",
+        "live_status": "DISABLED"
+      },
+      "credential_ref": "fixture_value",
+      "qualification_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "Command_provider_compact": {
+      "conversation_id": "fixture_value",
+      "profile_id": "fixture_value",
+      "expected_version": 1
+    },
+    "Command_connection_authorize": {
+      "provider": "fixture_value",
+      "requested_scopes": [
+        "fixture_value"
+      ],
+      "return_to": "fixture_value"
+    },
+    "Command_connection_revoke": {
+      "connection_id": "fixture_value",
+      "expected_version": 1,
+      "reason": "fixture_value"
+    },
+    "Command_schedule_create": {
+      "workflow_id": "fixture_value",
+      "input_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "grant_id": "fixture_value",
+      "cron": "fixture_value",
+      "timezone": "fixture_value",
+      "overlap": "SKIP",
+      "dst_gap": "SKIP",
+      "dst_fold": "RUN_ONCE"
+    },
+    "Command_deadletter_replay": {
+      "event_id": "fixture_value",
+      "reason": "fixture_value"
+    },
+    "Command_ui_register": {
+      "plugin_id": "fixture_value",
+      "contributions": [
+        {
+          "id": "fixture_value",
+          "slot": "NAVIGATION",
+          "path": "fixture_value",
+          "ui_contract_version": "1.0.0",
+          "trust": "TRUSTED_BUNDLE",
+          "required_action": "fixture_value"
+        }
+      ]
+    },
+    "Command_export_create": {
+      "resource_type": "fixture_value",
+      "format": "JSON",
+      "filter_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "Command_notification_read": {
+      "notification_id": "fixture_value"
+    },
+    "Command_support_request": {
+      "actions": [
+        "fixture_value"
+      ],
+      "expires_at": "2026-09-17T00:00:00Z",
+      "reason": "fixture_value"
+    },
+    "Command_kill_switch_set": {
+      "scope": "TENANT",
+      "target_id": "fixture_value",
+      "active": true,
+      "reason": "fixture_value"
+    },
+    "Command_release_qualify": {
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      }
+    },
+    "Command_catalog_submit": {
+      "manifest": {
+        "id": "fixture_value",
+        "version": "1.0.0",
+        "contract_version": "1.0.0",
+        "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "publisher_id": "fixture_value",
+        "execution_class": "TRUSTED_NATIVE",
+        "requested_capabilities": [
+          "fixture_value"
+        ],
+        "dependencies": [
+          {
+            "plugin_id": "fixture_value",
+            "contract_range": "fixture_value",
+            "optional": true
+          }
+        ],
+        "ui": [
+          {
+            "id": "fixture_value",
+            "slot": "NAVIGATION",
+            "path": "fixture_value",
+            "ui_contract_version": "1.0.0",
+            "trust": "TRUSTED_BUNDLE",
+            "required_action": "fixture_value"
+          }
+        ],
+        "migrations": [
+          {
+            "id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "compatibility": "ADDITIVE",
+            "reversible": true
+          }
+        ],
+        "license_expression": "fixture_value",
+        "sbom_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_ref": "fixture_value",
+        "handlers": [
+          {
+            "id": "fixture_value",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "effects": "READ_ONLY",
+            "required_capabilities": [
+              "fixture_value"
+            ],
+            "max_execution_seconds": 1
+          }
+        ],
+        "workflows": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "data_contracts": [
+          {
+            "artifact_id": "fixture_value",
+            "tenant_id": "fixture_value",
+            "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "schema_version": "1.0.0",
+            "classification": "PUBLIC"
+          }
+        ],
+        "tools": [
+          {
+            "id": "fixture_value",
+            "version": "1.0.0",
+            "input_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "output_schema_ref": {
+              "artifact_id": "fixture_value",
+              "tenant_id": "fixture_value",
+              "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "schema_version": "1.0.0",
+              "classification": "PUBLIC"
+            },
+            "action": "fixture_value",
+            "effect_class": "READ_ONLY",
+            "connection_provider": "fixture_value",
+            "trust": "FIRST_PARTY"
+          }
+        ]
+      },
+      "support_contact": "fixture_value",
+      "description": "fixture_value"
+    },
+    "Command_catalog_review": {
+      "listing_id": "fixture_value",
+      "decision": "APPROVE",
+      "evidence_ref": {
+        "artifact_id": "fixture_value",
+        "tenant_id": "fixture_value",
+        "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "classification": "PUBLIC"
+      },
+      "expected_version": 1
+    },
+    "Command_conformance_run": {
+      "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "suite_version": "1.0.0",
+      "profile": "MOCK"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "Q-001",
+    "question": "Xác nhận proposed scope partitions,ICP và priorities thay vì tự coi đã approved.",
+    "owner": "Product Owner",
+    "blocks": "Business freeze; không chặn contract-first local coding"
+  },
+  {
+    "id": "Q-002",
+    "question": "Chọn cloud region,jurisdiction,retention,DPA và permitted provider data handling cho customer data thật.",
+    "owner": "Privacy/Legal Owner",
+    "blocks": "Production ingest/model transmission;local synthetic vẫn triển khai"
+  },
+  {
+    "id": "Q-003",
+    "question": "Cung cấp hoặc tạo authorized live accounts,scopes và source licenses theo connector.",
+    "owner": "Integration Owner",
+    "blocks": "Live connector qualification/activation;mock contracts không bị chặn"
+  },
+  {
+    "id": "Q-004",
+    "question": "Chấp thuận security/session/autonomy/budget defaults và reviewer separation cho production.",
+    "owner": "Security Lead + Product Owner",
+    "blocks": "Production protected writes và auto mode"
+  },
+  {
+    "id": "Q-005",
+    "question": "Chốt named implementers,independent reviewers và release/on-call authority.",
+    "owner": "Delivery Manager",
+    "blocks": "G-READY assignment và independent review/release;không giả chữ ký"
+  },
+  {
+    "id": "Q-006",
+    "question": "Xác nhận trademark/domain và OSS distribution/license strategy trước public branding/registry.",
+    "owner": "Product Owner + Legal",
+    "blocks": "Public launch và commerce;local namespaces là fixtures"
+  },
+  {
+    "id": "Q-007",
+    "question": "Chốt deployed dependency versions qua bootstrap conformance/lock và measured capacity qua benchmark.",
+    "owner": "Platform Lead + Operations Lead",
+    "blocks": "Production runtime/performance qualification;không cần đoán version trong spec"
+  }
+]

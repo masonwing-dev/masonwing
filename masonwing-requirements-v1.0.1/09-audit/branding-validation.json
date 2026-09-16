@@ -1,0 +1,415 @@
+{
+  "product": "MASONWING",
+  "spec_version": "1.0.1",
+  "checked_at": "2026-09-16T04:10:04+00:00",
+  "result": "PASS",
+  "scope": "BRANDING_DELTA_AND_DOCUMENT_INTEGRITY_ONLY",
+  "source_archive": "kernivo-requirements-spec-v1.0.0.zip",
+  "source_archive_sha256": "b22285e15ad023e0f07bc7b02496bf4253fe65207ce2025562f6d1347399c57f",
+  "change_request": "CR-BRAND-001",
+  "product_tests_executed": 0,
+  "checks_executed": 85,
+  "checks": [
+    {
+      "check": "baseline metadata unchanged: features",
+      "pass": true,
+      "value": 23
+    },
+    {
+      "check": "baseline metadata unchanged: requirements",
+      "pass": true,
+      "value": 158
+    },
+    {
+      "check": "baseline metadata unchanged: acceptance_criteria",
+      "pass": true,
+      "value": 162
+    },
+    {
+      "check": "baseline metadata unchanged: nfrs",
+      "pass": true,
+      "value": 24
+    },
+    {
+      "check": "baseline metadata unchanged: adrs",
+      "pass": true,
+      "value": 16
+    },
+    {
+      "check": "baseline metadata unchanged: test_cases_designed",
+      "pass": true,
+      "value": 686
+    },
+    {
+      "check": "baseline metadata unchanged: test_suites_designed",
+      "pass": true,
+      "value": 43
+    },
+    {
+      "check": "baseline metadata unchanged: state_vectors",
+      "pass": true,
+      "value": 314
+    },
+    {
+      "check": "baseline metadata unchanged: pairwise_vectors",
+      "pass": true,
+      "value": 14
+    },
+    {
+      "check": "baseline metadata unchanged: api_operations",
+      "pass": true,
+      "value": 43
+    },
+    {
+      "check": "baseline metadata unchanged: schemas",
+      "pass": true,
+      "value": 82
+    },
+    {
+      "check": "baseline metadata unchanged: unwanted_requirements",
+      "pass": true,
+      "value": 65
+    },
+    {
+      "check": "baseline metadata unchanged: open_questions",
+      "pass": true,
+      "value": 7
+    },
+    {
+      "check": "baseline metadata unchanged: product_tests_run",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "check": "baseline metadata unchanged: independent_review",
+      "pass": true,
+      "value": "PENDING"
+    },
+    {
+      "check": "baseline metadata unchanged: tracking",
+      "pass": true,
+      "value": "NOT_INITIALIZED"
+    },
+    {
+      "check": "baseline metadata unchanged: specification_status",
+      "pass": true,
+      "value": "DRAFT_BUILDABLE_PROPOSED_BASELINE"
+    },
+    {
+      "check": "entire requirement/AC/NFR/feature catalog unchanged except brand and document version",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/ARCHITECTURE.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/AUTH-AND-TENANCY.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/PERMISSIONS.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/THREAT-MODEL.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/defaults.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 02-architecture/dependency-candidates.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/CROSS-PRODUCT-HANDOFF.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/PROTOCOL.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/contracts.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/cross-product-map.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/data-plane.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/masonwing-platform.openapi.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/openapi.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/operations.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/shared-contracts.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 03-contracts/state-machines.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 04-data/DATA-MODEL.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 04-data/data-dictionary.csv",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 05-ux/UX-SPEC.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 05-ux/screens.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/FIXTURE-RECIPES.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/TEST-STRATEGY.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/approval.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/artifacts.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/audit.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/authorization.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/budget.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/composition.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/connectors.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/data.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/delegation.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/effects.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/events.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/lifecycle.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/marketplace.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/models.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/oidc.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/operations.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/registry.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/sandbox.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/sdk.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/search-export.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/sessions.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/ui.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/features/workflow.feature",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/fixtures/seed.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/fixtures/wire-examples.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/pairwise-vectors.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/reference-vectors.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/state-vectors.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/suites.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/test-cases.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 06-testing/traceability.csv",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 07-delivery/OPERATIONS-RUNBOOK.md",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 07-delivery/release-gates.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 07-delivery/release-partition.json",
+      "pass": true
+    },
+    {
+      "check": "branding-only content: 07-delivery/work-packages.json",
+      "pass": true
+    },
+    {
+      "check": "original inputs preserved byte-for-byte",
+      "pass": true,
+      "files": 3
+    },
+    {
+      "check": "original vendor preserved byte-for-byte",
+      "pass": true,
+      "files": 26
+    },
+    {
+      "check": "historical receipt preserved: check-results.json",
+      "pass": true
+    },
+    {
+      "check": "historical receipt preserved: cross-product-check.json",
+      "pass": true
+    },
+    {
+      "check": "historical receipt preserved: SEMANTIC-REVIEW.md",
+      "pass": true
+    },
+    {
+      "check": "historical receipt preserved: AC-SAMPLE-REVIEW.md",
+      "pass": true
+    },
+    {
+      "check": "historical receipt preserved: checker-negative-tests.json",
+      "pass": true
+    },
+    {
+      "check": "SRS unchanged outside authorized naming and revision metadata",
+      "pass": true
+    },
+    {
+      "check": "no superseded name in active implementation/test documents",
+      "pass": true,
+      "residual_paths": []
+    },
+    {
+      "check": "local Markdown links resolve",
+      "pass": true,
+      "broken_links": []
+    }
+  ],
+  "implementation_files_with_name_changes": [
+    "02-architecture/AUTH-AND-TENANCY.md",
+    "03-contracts/CROSS-PRODUCT-HANDOFF.md",
+    "03-contracts/contracts.json",
+    "03-contracts/cross-product-map.json",
+    "03-contracts/data-plane.json",
+    "03-contracts/masonwing-platform.openapi.json",
+    "03-contracts/openapi.json",
+    "03-contracts/shared-contracts.json",
+    "06-testing/features/approval.feature",
+    "06-testing/features/artifacts.feature",
+    "06-testing/features/audit.feature",
+    "06-testing/features/authorization.feature",
+    "06-testing/features/budget.feature",
+    "06-testing/features/composition.feature",
+    "06-testing/features/connectors.feature",
+    "06-testing/features/data.feature",
+    "06-testing/features/delegation.feature",
+    "06-testing/features/effects.feature",
+    "06-testing/features/events.feature",
+    "06-testing/features/lifecycle.feature",
+    "06-testing/features/marketplace.feature",
+    "06-testing/features/models.feature",
+    "06-testing/features/oidc.feature",
+    "06-testing/features/operations.feature",
+    "06-testing/features/registry.feature",
+    "06-testing/features/sandbox.feature",
+    "06-testing/features/sdk.feature",
+    "06-testing/features/search-export.feature",
+    "06-testing/features/sessions.feature",
+    "06-testing/features/ui.feature",
+    "06-testing/features/workflow.feature",
+    "06-testing/test-cases.json",
+    "06-testing/traceability.csv"
+  ],
+  "limitations": [
+    "Brand selection is approved; trademark/domain/package clearance remains unverified.",
+    "Historical inputs and audit receipts retain original names deliberately.",
+    "No product build, runtime tests, external integration or deployment performed."
+  ]
+}

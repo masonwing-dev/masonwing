@@ -1,0 +1,88 @@
+{
+  "status": "PROPOSED_NOT_PRODUCTION_APPROVED",
+  "owner_refs": [
+    "A-LIMITS",
+    "A-SEC",
+    "A-OPS",
+    "A-PRIVACY",
+    "A-SAFETY"
+  ],
+  "auth": {
+    "login_transaction_ttl_seconds": 300,
+    "session_idle_seconds": 1800,
+    "session_absolute_seconds": 43200,
+    "step_up_ttl_seconds": 300,
+    "read_permission_lease_seconds": 15,
+    "sse_revocation_target_seconds": 15,
+    "session_cleanup_interval_seconds": 60,
+    "support_grant_max_seconds": 900,
+    "clock_skew_seconds": 60,
+    "issuer_redirects_allowed": false
+  },
+  "limits": {
+    "command_payload_bytes": 1048576,
+    "artifact_upload_bytes": 1073741824,
+    "import_bytes": 52428800,
+    "import_rows": 100000,
+    "page_size_default": 50,
+    "page_size_max": 200,
+    "model_turns_per_run": 8,
+    "tool_calls_per_turn": 8,
+    "max_output_tokens": 8192,
+    "parallel_tasks_per_run": 4,
+    "parallel_tasks_per_tenant": 20,
+    "pending_jobs_per_tenant": 10000,
+    "wasm_memory_bytes": 134217728,
+    "wasm_deadline_seconds": 5,
+    "host_io_deadline_seconds": 30,
+    "run_deadline_seconds": 1800,
+    "read_retries": 3,
+    "safe_not_sent_mutation_retries": 3,
+    "repair_attempts": 2,
+    "backoff_base_seconds": 1,
+    "backoff_max_seconds": 60
+  },
+  "events": {
+    "sse_heartbeat_seconds": 15,
+    "replay_window_seconds": 86400,
+    "command_dedupe_seconds": 86400,
+    "schedule_overlap": "COALESCE_LATEST",
+    "dst_gap": "SKIP",
+    "dst_fold": "RUN_ONCE"
+  },
+  "artifacts": {
+    "public_internal_locator_seconds": 60,
+    "restricted_proxy_only": true,
+    "temporary_cleanup_seconds": 300
+  },
+  "budgets": {
+    "live_default_limit_microunits": 0,
+    "auto_external_writes_default": false,
+    "unknown_usage_releases_reservation": false
+  },
+  "sample_retention_test_only": {
+    "source_raw_days": 30,
+    "provider_conversation_days": 7,
+    "trace_days": 14,
+    "export_days": 7,
+    "audit_days": 365,
+    "backup_days": 35,
+    "active_erasure_sla_hours": 24,
+    "production_requires_explicit_policy": true
+  },
+  "profiles": {
+    "local_autonomy": "DRAFT_ONLY",
+    "proposed_live_autonomy": "APPROVE_EACH",
+    "qualification_brand_publications_per_day": 2,
+    "score_profile": "SCORE-1",
+    "experiment_baseline_days": 14,
+    "experiment_observation_days": 28,
+    "experiment_edit_cooldown_days": 14
+  },
+  "alerts": {
+    "dlq_count_threshold": 1,
+    "unknown_effect_age_seconds": 300,
+    "backlog_age_seconds": 60,
+    "usage_unknown_age_seconds": 300
+  }
+}

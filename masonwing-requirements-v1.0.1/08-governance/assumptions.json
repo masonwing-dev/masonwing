@@ -1,0 +1,101 @@
+[
+  {
+    "id": "A-PRIORITY",
+    "statement": "Toàn bộ REQ/NFR là Must trong release partition được chọn; C2/M3 không thuộc first pilot nhưng không bị xóa khỏi tổng scope.",
+    "owner": "Product Owner",
+    "affects": "priorities,release-partition.json",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-ARCH",
+    "statement": "Microkernel/platform/domain boundaries,PostgreSQL+Temporal+Wasmtime là implementation baseline được đề xuất; không phải kết quả benchmark.",
+    "owner": "Platform Lead",
+    "affects": "ADRs,architecture,work packages",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-CONTRACT",
+    "statement": "Contract1.0.0,closed command catalog,current+previous minor compatibility và error taxonomy là thiết kế do tác giả đưa ra.",
+    "owner": "Platform Lead",
+    "affects": "contracts,all API ACs",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-PERF",
+    "statement": "Tất cả latency,throughput,capacity và hardware trong NFR/ENV-PERF là mục tiêu qualification,chưa đo.",
+    "owner": "Performance Lead",
+    "affects": "NFR performance,load profiles",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-LIMITS",
+    "statement": "Session/TTL,turns8,concurrency,upload ceilings,backlog,retries và deadlines trong defaults là candidate limits.",
+    "owner": "Security Lead + Platform Lead",
+    "affects": "defaults.json,auth/budget/sandbox",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-SEC",
+    "statement": "Keycloak+BFF+Cedar,default deny,step-up5min,read lease15sec và role mapping là proposed policy; user chỉ yêu cầu reuse OSS.",
+    "owner": "Security Lead",
+    "affects": "auth,permissions,NFR security",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-PRIVACY",
+    "statement": "Không đoán region/legal basis/retention;sample values chỉ test. Production không activate nếu thiếu approved policy.",
+    "owner": "Privacy/Legal Owner",
+    "affects": "privacy,source rights,deletion,provider gate",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-OPS",
+    "statement": "RPO15min,RTO4h,monthly drill,canary5% và environmental separation là proposed operating targets.",
+    "owner": "Operations Lead",
+    "affects": "operations,NFR reliability",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-UX",
+    "statement": "Layout tokens,breakpoints,matrix và WCAG2.2AA target là proposed baseline,chưa có approved visual prototype.",
+    "owner": "Design Lead",
+    "affects": "UX spec,NFR interaction",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-TEST",
+    "statement": "Branch coverage>=90% critical modules,finite exhaustive state pairs,pairwise factors và evidence requirements là proposed QA gate.",
+    "owner": "QA Lead",
+    "affects": "all test artifacts,NFR maintainability",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-SAFETY",
+    "statement": "Live budget mặc định0,external write cần explicit activation,no blind retries và override rules là conservative defaults.",
+    "owner": "Product Owner + Security Lead",
+    "affects": "effects,autonomy,release gates",
+    "status": "Proposed"
+  },
+  {
+    "id": "A-RELEASE",
+    "statement": "Chưa có sản phẩm hoặc live accounts để qualification;all product tests NOT_RUN;tracking NOT_INITIALIZED;independent review PENDING.",
+    "owner": "Release Owner",
+    "affects": "release gates,audit",
+    "status": "Recorded limitation"
+  },
+  {
+    "id": "A-BRAND",
+    "statement": "Masonwing (framework) và Gleanbird (marketing agent) là tên đã được người dùng chọn ngày 16/09/2026; trademark/domain/package namespace clearance vẫn chưa xác nhận.",
+    "owner": "Product Owner",
+    "affects": "product names,public launch",
+    "status": "Naming accepted by user; clearance pending",
+    "source": "SRC-CHAT-BRAND"
+  },
+  {
+    "id": "A-TEAM",
+    "statement": "Owner/reviewer là responsibility roles,chưa gán danh tính nhân sự;không giả định headcount từ dự án khác.",
+    "owner": "Delivery Manager",
+    "affects": "work packages,independent review",
+    "status": "Proposed"
+  }
+]

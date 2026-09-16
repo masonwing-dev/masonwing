@@ -1,0 +1,45 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/contracts",
+    "crates/kernel",
+    "crates/sdk",
+    "crates/host-api",
+    "crates/worker",
+    "crates/component-runner",
+    "crates/remote-runner",
+    "crates/cli",
+    "platform-plugins/identity-oidc",
+    "platform-plugins/authorization-cedar",
+    "platform-plugins/data-postgres",
+    "platform-plugins/artifacts",
+    "platform-plugins/workflow-temporal",
+    "platform-plugins/model-provider",
+    "platform-plugins/connections",
+    "platform-plugins/budget",
+    "platform-plugins/events",
+    "platform-plugins/secrets",
+    "products/document-review",
+    "products/checksum",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+publish = false
+
+[workspace.dependencies]
+axum = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "signal"] }
+tower = { version = "0.5", features = ["util"] }
+
+masonwing-contracts = { path = "crates/contracts" }
+masonwing-kernel = { path = "crates/kernel" }
+masonwing-sdk = { path = "crates/sdk" }
+masonwing-host-api = { path = "crates/host-api" }
+

@@ -1,0 +1,38 @@
+{
+  "realm": "masonwing",
+  "enabled": true,
+  "displayName": "Masonwing local development",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "loginWithEmailAllowed": false,
+  "sslRequired": "none",
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 43200,
+  "clients": [{
+    "clientId": "masonwing-local-bff",
+    "name": "Masonwing local BFF",
+    "enabled": true,
+    "protocol": "openid-connect",
+    "publicClient": false,
+    "secret": "masonwing-synthetic-bff-client-secret",
+    "standardFlowEnabled": true,
+    "implicitFlowEnabled": false,
+    "directAccessGrantsEnabled": false,
+    "serviceAccountsEnabled": false,
+    "redirectUris": ["http://localhost:39850/auth/callback"],
+    "webOrigins": ["http://localhost:39850"],
+    "attributes": {
+      "pkce.code.challenge.method": "S256",
+      "post.logout.redirect.uris": "http://localhost:39850/"
+    }
+  }],
+  "users": [{
+    "username": "developer",
+    "enabled": true,
+    "emailVerified": true,
+    "email": "developer@example.test",
+    "firstName": "Local",
+    "lastName": "Developer",
+    "credentials": [{"type": "password", "value": "masonwing-local-developer", "temporary": false}]
+  }]
+}

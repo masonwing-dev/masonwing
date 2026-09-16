@@ -1,0 +1,132 @@
+{
+  "not_a_built_sbom": true,
+  "entries": [
+    {
+      "name": "Rust toolchain",
+      "layer": "application",
+      "usage": "Rust stable toolchain pinned at bootstrap",
+      "source": "User constraint",
+      "owner": "Platform Lead"
+    },
+    {
+      "name": "Tokio/Axum/Serde/reqwest/SQLx",
+      "layer": "backend",
+      "usage": "compatible candidates resolved together; Cargo.lock required",
+      "source": "OSS reuse",
+      "owner": "Platform Lead"
+    },
+    {
+      "name": "Keycloak",
+      "layer": "identity",
+      "usage": "OIDC provider; exact container digest qualified",
+      "source": "WEB-KC",
+      "owner": "Security Lead"
+    },
+    {
+      "name": "openidconnect",
+      "layer": "OIDC library",
+      "usage": "discovery/code/PKCE/verifier via reviewed config",
+      "source": "WEB-OIDC",
+      "owner": "Security Lead"
+    },
+    {
+      "name": "tower-sessions + SQLx store",
+      "layer": "session",
+      "usage": "server session and cleanup",
+      "source": "WEB-SESSION",
+      "owner": "Security Lead"
+    },
+    {
+      "name": "cedar-policy",
+      "layer": "authorization",
+      "usage": "embedded evaluator; diagnostics fail closed adapter",
+      "source": "WEB-CEDAR",
+      "owner": "Security Lead"
+    },
+    {
+      "name": "oauth2",
+      "layer": "connector auth",
+      "usage": "protocol library; scopes/token lifecycle app contract",
+      "source": "Prior auth recommendation",
+      "owner": "Integration Lead"
+    },
+    {
+      "name": "OpenBao",
+      "layer": "secret manager",
+      "usage": "adapter to approved secret backend; no custom crypto",
+      "source": "Prior auth recommendation",
+      "owner": "Security Lead"
+    },
+    {
+      "name": "PostgreSQL",
+      "layer": "business data",
+      "usage": "RLS/runtime nonprivileged role; exact version test",
+      "source": "WEB-PG",
+      "owner": "Platform Lead"
+    },
+    {
+      "name": "Temporal Rust SDK/server",
+      "layer": "durable execution",
+      "usage": "candidate qualification mandatory; no GA assumption",
+      "source": "WEB-TEMPORAL-PREVIEW",
+      "owner": "Platform Lead"
+    },
+    {
+      "name": "Wasmtime",
+      "layer": "sandbox",
+      "usage": "Component/WIT and bounded host resources",
+      "source": "WEB-WASM",
+      "owner": "Platform Lead"
+    },
+    {
+      "name": "React/TypeScript/Vite",
+      "layer": "frontend",
+      "usage": "pin lock/peer compatibility at bootstrap",
+      "source": "User constraint",
+      "owner": "Frontend Lead"
+    },
+    {
+      "name": "shadcn/ui/Tailwind",
+      "layer": "design system",
+      "usage": "shared package and scanned source roots",
+      "source": "WEB-SHADCN",
+      "owner": "Frontend Lead"
+    },
+    {
+      "name": "TanStack Query",
+      "layer": "server state",
+      "usage": "query invalidation/abort/tenant-key policy",
+      "source": "Prior architecture recommendation",
+      "owner": "Frontend Lead"
+    },
+    {
+      "name": "Keycloakify",
+      "layer": "login theme",
+      "usage": "React theme candidate; compatibility smoke with IdP",
+      "source": "Prior auth recommendation",
+      "owner": "Frontend Lead"
+    },
+    {
+      "name": "OpenTelemetry",
+      "layer": "observability",
+      "usage": "trace bridge with redaction and tenant-safe labels",
+      "source": "Proposed baseline",
+      "owner": "Ops Lead"
+    },
+    {
+      "name": "Playwright/Vitest/Testing Library/axe-core",
+      "layer": "web tests",
+      "usage": "test runner/browser versions in evidence",
+      "source": "Proposed QA baseline",
+      "owner": "QA Lead"
+    },
+    {
+      "name": "nextest/llvm-cov/proptest/wiremock/testcontainers",
+      "layer": "Rust tests",
+      "usage": "exact toolchain locked with tests",
+      "source": "Proposed QA baseline",
+      "owner": "QA Lead"
+    }
+  ],
+  "release_rule": "Actual versions/licenses/digests must be captured from the implementation lock and qualified; no fabricated lock supplied."
+}

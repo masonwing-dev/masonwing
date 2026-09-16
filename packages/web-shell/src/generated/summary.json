@@ -1,0 +1,14 @@
+{
+  "masonwing": {
+    "features": 23,
+    "requirements": 158,
+    "criteria": 162,
+    "quality_requirements": 24,
+    "test_cases": 686,
+    "suites": 43,
+    "commands": 43,
+    "screens": 23,
+    "state_vectors": 314,
+    "schema_definitions": 82
+  }
+}

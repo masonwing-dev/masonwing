@@ -1,0 +1,3145 @@
+{
+  "coverage": "all distinct ordered state pairs in declared finite machines;guards/races tested separately",
+  "vectors": [
+    {
+      "id": "ST-0001",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "VERIFIED",
+      "event": "verify",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0002",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0003",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0004",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0005",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0006",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0007",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0008",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0009",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "QUARANTINED",
+      "event": "invalid",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0010",
+      "machine": "plugin",
+      "from": "DISCOVERED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0011",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0012",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "RESOLVED",
+      "event": "resolve",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0013",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0014",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0015",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0016",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0017",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0018",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0019",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "QUARANTINED",
+      "event": "invalid",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0020",
+      "machine": "plugin",
+      "from": "VERIFIED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0021",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0022",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0023",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "STAGED",
+      "event": "stage",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0024",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0025",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0026",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0027",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0028",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0029",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0030",
+      "machine": "plugin",
+      "from": "RESOLVED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0031",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0032",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0033",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0034",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "INSTALLED_DISABLED",
+      "event": "install",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0035",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0036",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0037",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0038",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0039",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "QUARANTINED",
+      "event": "invalid",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0040",
+      "machine": "plugin",
+      "from": "STAGED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0041",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0042",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0043",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0044",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0045",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "ENABLED",
+      "event": "enable",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0046",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0047",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0048",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "UNINSTALLED",
+      "event": "uninstall",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0049",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0050",
+      "machine": "plugin",
+      "from": "INSTALLED_DISABLED",
+      "to": "REVOKED",
+      "event": "security_revoke",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0051",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0052",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0053",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0054",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0055",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0056",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "DRAINING",
+      "event": "disable",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0057",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0058",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0059",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0060",
+      "machine": "plugin",
+      "from": "ENABLED",
+      "to": "REVOKED",
+      "event": "security_revoke",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0061",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0062",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0063",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0064",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0065",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0066",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0067",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "DISABLED",
+      "event": "drained",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0068",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0069",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0070",
+      "machine": "plugin",
+      "from": "DRAINING",
+      "to": "REVOKED",
+      "event": "security_revoke",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0071",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0072",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0073",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0074",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0075",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0076",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "ENABLED",
+      "event": "enable",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0077",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0078",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "UNINSTALLED",
+      "event": "uninstall",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0079",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0080",
+      "machine": "plugin",
+      "from": "DISABLED",
+      "to": "REVOKED",
+      "event": "security_revoke",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0081",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0082",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0083",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0084",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0085",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0086",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0087",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0088",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0089",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0090",
+      "machine": "plugin",
+      "from": "UNINSTALLED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0091",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0092",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0093",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0094",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0095",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0096",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0097",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0098",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0099",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0100",
+      "machine": "plugin",
+      "from": "QUARANTINED",
+      "to": "REVOKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0101",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "DISCOVERED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0102",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "VERIFIED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0103",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "RESOLVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0104",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "STAGED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0105",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "INSTALLED_DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0106",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "ENABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0107",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "DRAINING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0108",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "DISABLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0109",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "UNINSTALLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0110",
+      "machine": "plugin",
+      "from": "REVOKED",
+      "to": "QUARANTINED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0111",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "RUNNING",
+      "event": "dispatch",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0112",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0113",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0114",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0115",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0116",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0117",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0118",
+      "machine": "run",
+      "from": "QUEUED",
+      "to": "CANCELLED",
+      "event": "cancel_before_start",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0119",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0120",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "WAITING_APPROVAL",
+      "event": "approval_needed",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0121",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "WAITING_RETRY",
+      "event": "retryable_failure",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0122",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "BLOCKED",
+      "event": "guard_failed",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0123",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "CANCEL_REQUESTED",
+      "event": "cancel_after_dispatch",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0124",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "SUCCEEDED",
+      "event": "complete",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0125",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "FAILED",
+      "event": "terminal_failure",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0126",
+      "machine": "run",
+      "from": "RUNNING",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0127",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0128",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "RUNNING",
+      "event": "approved",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0129",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0130",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0131",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0132",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0133",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0134",
+      "machine": "run",
+      "from": "WAITING_APPROVAL",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0135",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0136",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "RUNNING",
+      "event": "retry_due",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0137",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0138",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0139",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0140",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0141",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0142",
+      "machine": "run",
+      "from": "WAITING_RETRY",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0143",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0144",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "RUNNING",
+      "event": "revalidated",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0145",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0146",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0147",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0148",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0149",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0150",
+      "machine": "run",
+      "from": "BLOCKED",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0151",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0152",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "RUNNING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0153",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0154",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0155",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0156",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "SUCCEEDED",
+      "event": "effect_confirmed",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0157",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0158",
+      "machine": "run",
+      "from": "CANCEL_REQUESTED",
+      "to": "CANCELLED",
+      "event": "reconciled_cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0159",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0160",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "RUNNING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0161",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0162",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0163",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0164",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0165",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0166",
+      "machine": "run",
+      "from": "SUCCEEDED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0167",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0168",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "RUNNING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0169",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0170",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0171",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0172",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0173",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0174",
+      "machine": "run",
+      "from": "FAILED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0175",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "QUEUED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0176",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "RUNNING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0177",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0178",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "WAITING_RETRY",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0179",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "BLOCKED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0180",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "CANCEL_REQUESTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0181",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0182",
+      "machine": "run",
+      "from": "CANCELLED",
+      "to": "FAILED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0183",
+      "machine": "approval",
+      "from": "PENDING",
+      "to": "APPROVED",
+      "event": "approve",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0184",
+      "machine": "approval",
+      "from": "PENDING",
+      "to": "REJECTED",
+      "event": "reject",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0185",
+      "machine": "approval",
+      "from": "PENDING",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0186",
+      "machine": "approval",
+      "from": "PENDING",
+      "to": "EXPIRED",
+      "event": "expire",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0187",
+      "machine": "approval",
+      "from": "PENDING",
+      "to": "STALE",
+      "event": "content_changed",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0188",
+      "machine": "approval",
+      "from": "APPROVED",
+      "to": "PENDING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0189",
+      "machine": "approval",
+      "from": "APPROVED",
+      "to": "REJECTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0190",
+      "machine": "approval",
+      "from": "APPROVED",
+      "to": "CANCELLED",
+      "event": "cancel_before_ponr",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0191",
+      "machine": "approval",
+      "from": "APPROVED",
+      "to": "EXPIRED",
+      "event": "expire",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0192",
+      "machine": "approval",
+      "from": "APPROVED",
+      "to": "STALE",
+      "event": "binding_changed",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0193",
+      "machine": "approval",
+      "from": "REJECTED",
+      "to": "PENDING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0194",
+      "machine": "approval",
+      "from": "REJECTED",
+      "to": "APPROVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0195",
+      "machine": "approval",
+      "from": "REJECTED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0196",
+      "machine": "approval",
+      "from": "REJECTED",
+      "to": "EXPIRED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0197",
+      "machine": "approval",
+      "from": "REJECTED",
+      "to": "STALE",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0198",
+      "machine": "approval",
+      "from": "CANCELLED",
+      "to": "PENDING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0199",
+      "machine": "approval",
+      "from": "CANCELLED",
+      "to": "APPROVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0200",
+      "machine": "approval",
+      "from": "CANCELLED",
+      "to": "REJECTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0201",
+      "machine": "approval",
+      "from": "CANCELLED",
+      "to": "EXPIRED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0202",
+      "machine": "approval",
+      "from": "CANCELLED",
+      "to": "STALE",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0203",
+      "machine": "approval",
+      "from": "EXPIRED",
+      "to": "PENDING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0204",
+      "machine": "approval",
+      "from": "EXPIRED",
+      "to": "APPROVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0205",
+      "machine": "approval",
+      "from": "EXPIRED",
+      "to": "REJECTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0206",
+      "machine": "approval",
+      "from": "EXPIRED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0207",
+      "machine": "approval",
+      "from": "EXPIRED",
+      "to": "STALE",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0208",
+      "machine": "approval",
+      "from": "STALE",
+      "to": "PENDING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0209",
+      "machine": "approval",
+      "from": "STALE",
+      "to": "APPROVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0210",
+      "machine": "approval",
+      "from": "STALE",
+      "to": "REJECTED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0211",
+      "machine": "approval",
+      "from": "STALE",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0212",
+      "machine": "approval",
+      "from": "STALE",
+      "to": "EXPIRED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0213",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "WAITING_APPROVAL",
+      "event": "need_approval",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0214",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "AUTHORIZED",
+      "event": "auto_authorize",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0215",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0216",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0217",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0218",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0219",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0220",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0221",
+      "machine": "effect",
+      "from": "PREPARED",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0222",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0223",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "AUTHORIZED",
+      "event": "approval_valid",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0224",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0225",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0226",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0227",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0228",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0229",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0230",
+      "machine": "effect",
+      "from": "WAITING_APPROVAL",
+      "to": "CANCELLED",
+      "event": "cancel",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0231",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0232",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0233",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "EXECUTING",
+      "event": "transmit",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0234",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0235",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0236",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0237",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0238",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0239",
+      "machine": "effect",
+      "from": "AUTHORIZED",
+      "to": "CANCELLED",
+      "event": "cancel_before_ponr",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0240",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0241",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0242",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0243",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "SUCCEEDED",
+      "event": "receipt_success",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0244",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "FAILED_CONFIRMED",
+      "event": "receipt_failure",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0245",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "ambiguous_timeout",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0246",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0247",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0248",
+      "machine": "effect",
+      "from": "EXECUTING",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0249",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0250",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0251",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0252",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0253",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0254",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0255",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0256",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0257",
+      "machine": "effect",
+      "from": "SUCCEEDED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0258",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0259",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0260",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0261",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0262",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0263",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0264",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0265",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0266",
+      "machine": "effect",
+      "from": "FAILED_CONFIRMED",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0267",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0268",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0269",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0270",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0271",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0272",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0273",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "RECONCILING",
+      "event": "lookup",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0274",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0275",
+      "machine": "effect",
+      "from": "OUTCOME_UNKNOWN",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0276",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0277",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0278",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "AUTHORIZED",
+      "event": "proven_absent_reauthorize",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0279",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0280",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "SUCCEEDED",
+      "event": "confirmed_present",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0281",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "FAILED_CONFIRMED",
+      "event": "confirmed_failure",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0282",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0283",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "MANUAL_REVIEW",
+      "event": "unresolved",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0284",
+      "machine": "effect",
+      "from": "RECONCILING",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0285",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0286",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0287",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0288",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0289",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0290",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0291",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0292",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "RECONCILING",
+      "event": "new_evidence",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0293",
+      "machine": "effect",
+      "from": "MANUAL_REVIEW",
+      "to": "CANCELLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0294",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "PREPARED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0295",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "WAITING_APPROVAL",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0296",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "AUTHORIZED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0297",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "EXECUTING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0298",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "SUCCEEDED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0299",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "FAILED_CONFIRMED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0300",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "OUTCOME_UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0301",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "RECONCILING",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0302",
+      "machine": "effect",
+      "from": "CANCELLED",
+      "to": "MANUAL_REVIEW",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0303",
+      "machine": "cost",
+      "from": "RESERVED",
+      "to": "SETTLED",
+      "event": "known_usage",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0304",
+      "machine": "cost",
+      "from": "RESERVED",
+      "to": "UNKNOWN",
+      "event": "ambiguous_usage",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0305",
+      "machine": "cost",
+      "from": "RESERVED",
+      "to": "RELEASED",
+      "event": "proven_not_sent",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0306",
+      "machine": "cost",
+      "from": "SETTLED",
+      "to": "RESERVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0307",
+      "machine": "cost",
+      "from": "SETTLED",
+      "to": "UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0308",
+      "machine": "cost",
+      "from": "SETTLED",
+      "to": "RELEASED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0309",
+      "machine": "cost",
+      "from": "UNKNOWN",
+      "to": "RESERVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0310",
+      "machine": "cost",
+      "from": "UNKNOWN",
+      "to": "SETTLED",
+      "event": "known_usage",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0311",
+      "machine": "cost",
+      "from": "UNKNOWN",
+      "to": "RELEASED",
+      "event": "proven_zero_usage",
+      "allowed_adjacency": true,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "transition to target + audit version increment"
+    },
+    {
+      "id": "ST-0312",
+      "machine": "cost",
+      "from": "RELEASED",
+      "to": "RESERVED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0313",
+      "machine": "cost",
+      "from": "RELEASED",
+      "to": "SETTLED",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    },
+    {
+      "id": "ST-0314",
+      "machine": "cost",
+      "from": "RELEASED",
+      "to": "UNKNOWN",
+      "event": "UNDECLARED_TRANSITION",
+      "allowed_adjacency": false,
+      "guards": "All current rights,version,fence,budget and domain preconditions are valid for positive cases.",
+      "expected": "409 ILLEGAL_TRANSITION;state/version unchanged;provider transmit=0"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+pytest>=8.3,<10
+jsonschema[format]>=4.23,<5
+openapi-spec-validator>=0.7,<0.9
+psycopg[binary]>=3.2,<4
+boto3>=1.35,<2
+PyYAML>=6,<7

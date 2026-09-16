@@ -1,0 +1,3880 @@
+{
+  "contexts": [
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-001",
+        "key": "composition",
+        "name": "Lắp ghép sản phẩm, không fork kernel",
+        "phase": "C1",
+        "source": "SRC-CHAT-01",
+        "requirement_ids": [
+          "REQ-001",
+          "REQ-002",
+          "REQ-003",
+          "REQ-004",
+          "REQ-005"
+        ]
+      },
+      "work_package": {
+        "id": "WP-001",
+        "title": "Lắp ghép sản phẩm, không fork kernel",
+        "feature_id": "F-001",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [],
+        "requirement_ids": [
+          "REQ-001",
+          "REQ-002",
+          "REQ-003",
+          "REQ-004",
+          "REQ-005"
+        ],
+        "criterion_ids": [
+          "AC-001",
+          "AC-002",
+          "AC-003",
+          "AC-004",
+          "AC-005"
+        ],
+        "proposed_paths": [
+          "crates/composition",
+          "packages/web-shell/composition",
+          "tests/composition"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-COMPOSITION",
+        "route": "/workspace/:tenantId/composition",
+        "feature_id": "F-001",
+        "title": "Lắp ghép sản phẩm, không fork kernel",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "product.compose"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "product.compose",
+          "feature_id": "F-001",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_product_compose",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-001",
+        "TC-AC-002",
+        "TC-AC-003",
+        "TC-AC-004",
+        "TC-AC-005",
+        "TC-API-001",
+        "TC-API-002",
+        "TC-API-003",
+        "TC-API-004"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-002",
+        "key": "registry",
+        "name": "Danh tính plugin và dependency resolution",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-006",
+          "REQ-007",
+          "REQ-008",
+          "REQ-009",
+          "REQ-010",
+          "REQ-011"
+        ]
+      },
+      "work_package": {
+        "id": "WP-002",
+        "title": "Danh tính plugin và dependency resolution",
+        "feature_id": "F-002",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-006",
+          "REQ-007",
+          "REQ-008",
+          "REQ-009",
+          "REQ-010",
+          "REQ-011"
+        ],
+        "criterion_ids": [
+          "AC-006",
+          "AC-007",
+          "AC-008",
+          "AC-009",
+          "AC-010",
+          "AC-011"
+        ],
+        "proposed_paths": [
+          "crates/registry",
+          "packages/web-shell/registry",
+          "tests/registry"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-REGISTRY",
+        "route": "/workspace/:tenantId/registry",
+        "feature_id": "F-002",
+        "title": "Danh tính plugin và dependency resolution",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "plugin.install"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "plugin.install",
+          "feature_id": "F-002",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_install",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-006",
+        "TC-AC-007",
+        "TC-AC-008",
+        "TC-AC-009",
+        "TC-AC-010",
+        "TC-AC-011",
+        "TC-API-005",
+        "TC-API-006",
+        "TC-API-007",
+        "TC-API-008"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-003",
+        "key": "lifecycle",
+        "name": "Vòng đời, nâng cấp và thu hồi plugin",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-012",
+          "REQ-013",
+          "REQ-014",
+          "REQ-015",
+          "REQ-016",
+          "REQ-017",
+          "REQ-018"
+        ]
+      },
+      "work_package": {
+        "id": "WP-003",
+        "title": "Vòng đời, nâng cấp và thu hồi plugin",
+        "feature_id": "F-003",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-012",
+          "REQ-013",
+          "REQ-014",
+          "REQ-015",
+          "REQ-016",
+          "REQ-017",
+          "REQ-018"
+        ],
+        "criterion_ids": [
+          "AC-012",
+          "AC-013",
+          "AC-014",
+          "AC-015",
+          "AC-016",
+          "AC-017",
+          "AC-018"
+        ],
+        "proposed_paths": [
+          "crates/lifecycle",
+          "packages/web-shell/lifecycle",
+          "tests/lifecycle"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-LIFECYCLE",
+        "route": "/workspace/:tenantId/lifecycle",
+        "feature_id": "F-003",
+        "title": "Vòng đời, nâng cấp và thu hồi plugin",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "plugin.enable",
+          "plugin.disable",
+          "plugin.upgrade",
+          "plugin.revoke",
+          "plugin.uninstall"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "plugin.enable",
+          "feature_id": "F-003",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_enable",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "plugin.disable",
+          "feature_id": "F-003",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_disable",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "plugin.upgrade",
+          "feature_id": "F-003",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_upgrade",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "plugin.revoke",
+          "feature_id": "F-003",
+          "phase": "C1",
+          "roles_candidate": [
+            "SECURITY_REVIEWER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_revoke",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "plugin.uninstall",
+          "feature_id": "F-003",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_plugin_uninstall",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-012",
+        "TC-AC-013",
+        "TC-AC-014",
+        "TC-AC-015",
+        "TC-AC-016",
+        "TC-AC-017",
+        "TC-AC-018",
+        "TC-API-009",
+        "TC-API-010",
+        "TC-API-011",
+        "TC-API-012",
+        "TC-API-013",
+        "TC-API-014",
+        "TC-API-015",
+        "TC-API-016",
+        "TC-API-017",
+        "TC-API-018",
+        "TC-API-019",
+        "TC-API-020",
+        "TC-API-021",
+        "TC-API-022",
+        "TC-API-023",
+        "TC-API-024",
+        "TC-API-025",
+        "TC-API-026",
+        "TC-API-027",
+        "TC-API-028",
+        "TC-ST-0001",
+        "TC-ST-0002",
+        "TC-ST-0003",
+        "TC-ST-0004",
+        "TC-ST-0005",
+        "TC-ST-0006",
+        "TC-ST-0007",
+        "TC-ST-0008",
+        "TC-ST-0009",
+        "TC-ST-0010",
+        "TC-ST-0011",
+        "TC-ST-0012",
+        "TC-ST-0013",
+        "TC-ST-0014",
+        "TC-ST-0015",
+        "TC-ST-0016",
+        "TC-ST-0017",
+        "TC-ST-0018",
+        "TC-ST-0019",
+        "TC-ST-0020",
+        "TC-ST-0021",
+        "TC-ST-0022",
+        "TC-ST-0023",
+        "TC-ST-0024",
+        "TC-ST-0025",
+        "TC-ST-0026",
+        "TC-ST-0027",
+        "TC-ST-0028",
+        "TC-ST-0029",
+        "TC-ST-0030",
+        "TC-ST-0031",
+        "TC-ST-0032",
+        "TC-ST-0033",
+        "TC-ST-0034",
+        "TC-ST-0035",
+        "TC-ST-0036",
+        "TC-ST-0037",
+        "TC-ST-0038",
+        "TC-ST-0039",
+        "TC-ST-0040",
+        "TC-ST-0041",
+        "TC-ST-0042",
+        "TC-ST-0043",
+        "TC-ST-0044",
+        "TC-ST-0045",
+        "TC-ST-0046",
+        "TC-ST-0047",
+        "TC-ST-0048",
+        "TC-ST-0049",
+        "TC-ST-0050",
+        "TC-ST-0051",
+        "TC-ST-0052",
+        "TC-ST-0053",
+        "TC-ST-0054",
+        "TC-ST-0055",
+        "TC-ST-0056",
+        "TC-ST-0057",
+        "TC-ST-0058",
+        "TC-ST-0059",
+        "TC-ST-0060",
+        "TC-ST-0061",
+        "TC-ST-0062",
+        "TC-ST-0063",
+        "TC-ST-0064",
+        "TC-ST-0065",
+        "TC-ST-0066",
+        "TC-ST-0067",
+        "TC-ST-0068",
+        "TC-ST-0069",
+        "TC-ST-0070",
+        "TC-ST-0071",
+        "TC-ST-0072",
+        "TC-ST-0073",
+        "TC-ST-0074",
+        "TC-ST-0075",
+        "TC-ST-0076",
+        "TC-ST-0077",
+        "TC-ST-0078",
+        "TC-ST-0079",
+        "TC-ST-0080",
+        "TC-ST-0081",
+        "TC-ST-0082",
+        "TC-ST-0083",
+        "TC-ST-0084",
+        "TC-ST-0085",
+        "TC-ST-0086",
+        "TC-ST-0087",
+        "TC-ST-0088",
+        "TC-ST-0089",
+        "TC-ST-0090",
+        "TC-ST-0091",
+        "TC-ST-0092",
+        "TC-ST-0093",
+        "TC-ST-0094",
+        "TC-ST-0095",
+        "TC-ST-0096",
+        "TC-ST-0097",
+        "TC-ST-0098",
+        "TC-ST-0099",
+        "TC-ST-0100",
+        "TC-ST-0101",
+        "TC-ST-0102",
+        "TC-ST-0103",
+        "TC-ST-0104",
+        "TC-ST-0105",
+        "TC-ST-0106",
+        "TC-ST-0107",
+        "TC-ST-0108",
+        "TC-ST-0109",
+        "TC-ST-0110"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-004",
+        "key": "sandbox",
+        "name": "Cô lập Wasm, native và remote worker",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-019",
+          "REQ-020",
+          "REQ-021",
+          "REQ-022",
+          "REQ-023",
+          "REQ-024",
+          "REQ-025"
+        ]
+      },
+      "work_package": {
+        "id": "WP-004",
+        "title": "Cô lập Wasm, native và remote worker",
+        "feature_id": "F-004",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-019",
+          "REQ-020",
+          "REQ-021",
+          "REQ-022",
+          "REQ-023",
+          "REQ-024",
+          "REQ-025"
+        ],
+        "criterion_ids": [
+          "AC-019",
+          "AC-020",
+          "AC-021",
+          "AC-022",
+          "AC-023",
+          "AC-024",
+          "AC-025",
+          "AC-026"
+        ],
+        "proposed_paths": [
+          "crates/sandbox",
+          "packages/web-shell/sandbox",
+          "tests/sandbox"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-SANDBOX",
+        "route": "/workspace/:tenantId/sandbox",
+        "feature_id": "F-004",
+        "title": "Cô lập Wasm, native và remote worker",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "plugin.invoke"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "plugin.invoke",
+          "feature_id": "F-004",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_plugin_invoke",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-019",
+        "TC-AC-020",
+        "TC-AC-021",
+        "TC-AC-022",
+        "TC-AC-023",
+        "TC-AC-024",
+        "TC-AC-025",
+        "TC-AC-026",
+        "TC-API-029",
+        "TC-API-030",
+        "TC-API-031",
+        "TC-API-032"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-005",
+        "key": "oidc",
+        "name": "Đăng nhập OIDC qua Rust BFF",
+        "phase": "C1",
+        "source": "SRC-CHAT-AUTH",
+        "requirement_ids": [
+          "REQ-026",
+          "REQ-027",
+          "REQ-028",
+          "REQ-029",
+          "REQ-030",
+          "REQ-031",
+          "REQ-032",
+          "REQ-033"
+        ]
+      },
+      "work_package": {
+        "id": "WP-005",
+        "title": "Đăng nhập OIDC qua Rust BFF",
+        "feature_id": "F-005",
+        "phase": "C1",
+        "single_owner_role": "Security Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-026",
+          "REQ-027",
+          "REQ-028",
+          "REQ-029",
+          "REQ-030",
+          "REQ-031",
+          "REQ-032",
+          "REQ-033"
+        ],
+        "criterion_ids": [
+          "AC-027",
+          "AC-028",
+          "AC-029",
+          "AC-030",
+          "AC-031",
+          "AC-032",
+          "AC-033",
+          "AC-034"
+        ],
+        "proposed_paths": [
+          "crates/oidc",
+          "packages/web-shell/oidc",
+          "tests/oidc"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-OIDC",
+        "route": "/workspace/:tenantId/oidc",
+        "feature_id": "F-005",
+        "title": "Đăng nhập OIDC qua Rust BFF",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "identity.configure"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "identity.configure",
+          "feature_id": "F-005",
+          "phase": "C1",
+          "roles_candidate": [
+            "PLATFORM_OPERATOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_identity_configure",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-027",
+        "TC-AC-028",
+        "TC-AC-029",
+        "TC-AC-030",
+        "TC-AC-031",
+        "TC-AC-032",
+        "TC-AC-033",
+        "TC-AC-034",
+        "TC-API-033",
+        "TC-API-034",
+        "TC-API-035",
+        "TC-API-036"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-006",
+        "key": "sessions",
+        "name": "Session, membership và tổ chức",
+        "phase": "C1",
+        "source": "SRC-CHAT-AUTH",
+        "requirement_ids": [
+          "REQ-034",
+          "REQ-035",
+          "REQ-036",
+          "REQ-037",
+          "REQ-038",
+          "REQ-039",
+          "REQ-040",
+          "REQ-041"
+        ]
+      },
+      "work_package": {
+        "id": "WP-006",
+        "title": "Session, membership và tổ chức",
+        "feature_id": "F-006",
+        "phase": "C1",
+        "single_owner_role": "Security Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-034",
+          "REQ-035",
+          "REQ-036",
+          "REQ-037",
+          "REQ-038",
+          "REQ-039",
+          "REQ-040",
+          "REQ-041"
+        ],
+        "criterion_ids": [
+          "AC-035",
+          "AC-036",
+          "AC-037",
+          "AC-038",
+          "AC-039",
+          "AC-040",
+          "AC-041",
+          "AC-042",
+          "AC-043"
+        ],
+        "proposed_paths": [
+          "crates/sessions",
+          "packages/web-shell/sessions",
+          "tests/sessions"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-SESSIONS",
+        "route": "/workspace/:tenantId/sessions",
+        "feature_id": "F-006",
+        "title": "Session, membership và tổ chức",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "membership.invite",
+          "membership.accept",
+          "membership.change",
+          "membership.revoke"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "membership.invite",
+          "feature_id": "F-006",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_membership_invite",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "membership.accept",
+          "feature_id": "F-006",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_membership_accept",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "membership.change",
+          "feature_id": "F-006",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_membership_change",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "membership.revoke",
+          "feature_id": "F-006",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_membership_revoke",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-035",
+        "TC-AC-036",
+        "TC-AC-037",
+        "TC-AC-038",
+        "TC-AC-039",
+        "TC-AC-040",
+        "TC-AC-041",
+        "TC-AC-042",
+        "TC-AC-043",
+        "TC-API-037",
+        "TC-API-038",
+        "TC-API-039",
+        "TC-API-040",
+        "TC-API-041",
+        "TC-API-042",
+        "TC-API-043",
+        "TC-API-044",
+        "TC-API-045",
+        "TC-API-046",
+        "TC-API-047",
+        "TC-API-048",
+        "TC-API-049",
+        "TC-API-050",
+        "TC-API-051",
+        "TC-API-052"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-007",
+        "key": "authorization",
+        "name": "Cedar, tenant isolation và quyền theo tài nguyên",
+        "phase": "C1",
+        "source": "SRC-CHAT-AUTH",
+        "requirement_ids": [
+          "REQ-042",
+          "REQ-043",
+          "REQ-044",
+          "REQ-045",
+          "REQ-046",
+          "REQ-047",
+          "REQ-048"
+        ]
+      },
+      "work_package": {
+        "id": "WP-007",
+        "title": "Cedar, tenant isolation và quyền theo tài nguyên",
+        "feature_id": "F-007",
+        "phase": "C1",
+        "single_owner_role": "Security Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-042",
+          "REQ-043",
+          "REQ-044",
+          "REQ-045",
+          "REQ-046",
+          "REQ-047",
+          "REQ-048"
+        ],
+        "criterion_ids": [
+          "AC-044",
+          "AC-045",
+          "AC-046",
+          "AC-047",
+          "AC-048",
+          "AC-049",
+          "AC-050"
+        ],
+        "proposed_paths": [
+          "crates/authorization",
+          "packages/web-shell/authorization",
+          "tests/authorization"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-AUTHORIZATION",
+        "route": "/workspace/:tenantId/authorization",
+        "feature_id": "F-007",
+        "title": "Cedar, tenant isolation và quyền theo tài nguyên",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "policy.evaluate",
+          "policy.propose"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "policy.evaluate",
+          "feature_id": "F-007",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_policy_evaluate",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "policy.propose",
+          "feature_id": "F-007",
+          "phase": "C1",
+          "roles_candidate": [
+            "SECURITY_REVIEWER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_policy_propose",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-044",
+        "TC-AC-045",
+        "TC-AC-046",
+        "TC-AC-047",
+        "TC-AC-048",
+        "TC-AC-049",
+        "TC-AC-050",
+        "TC-API-053",
+        "TC-API-054",
+        "TC-API-055",
+        "TC-API-056",
+        "TC-API-057",
+        "TC-API-058",
+        "TC-API-059",
+        "TC-API-060",
+        "TC-PW-001",
+        "TC-PW-002",
+        "TC-PW-003",
+        "TC-PW-004",
+        "TC-PW-005",
+        "TC-PW-006",
+        "TC-PW-007",
+        "TC-PW-008",
+        "TC-PW-009",
+        "TC-PW-010",
+        "TC-PW-011",
+        "TC-PW-012",
+        "TC-PW-013",
+        "TC-PW-014"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-008",
+        "key": "delegation",
+        "name": "Machine identity và ủy quyền agent",
+        "phase": "C1",
+        "source": "SRC-CHAT-AUTH",
+        "requirement_ids": [
+          "REQ-049",
+          "REQ-050",
+          "REQ-051",
+          "REQ-052",
+          "REQ-053",
+          "REQ-054"
+        ]
+      },
+      "work_package": {
+        "id": "WP-008",
+        "title": "Machine identity và ủy quyền agent",
+        "feature_id": "F-008",
+        "phase": "C1",
+        "single_owner_role": "Security Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-049",
+          "REQ-050",
+          "REQ-051",
+          "REQ-052",
+          "REQ-053",
+          "REQ-054"
+        ],
+        "criterion_ids": [
+          "AC-051",
+          "AC-052",
+          "AC-053",
+          "AC-054",
+          "AC-055",
+          "AC-056"
+        ],
+        "proposed_paths": [
+          "crates/delegation",
+          "packages/web-shell/delegation",
+          "tests/delegation"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-DELEGATION",
+        "route": "/workspace/:tenantId/delegation",
+        "feature_id": "F-008",
+        "title": "Machine identity và ủy quyền agent",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "grant.create",
+          "grant.revoke"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "grant.create",
+          "feature_id": "F-008",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_grant_create",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "grant.revoke",
+          "feature_id": "F-008",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_grant_revoke",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-051",
+        "TC-AC-052",
+        "TC-AC-053",
+        "TC-AC-054",
+        "TC-AC-055",
+        "TC-AC-056",
+        "TC-API-061",
+        "TC-API-062",
+        "TC-API-063",
+        "TC-API-064",
+        "TC-API-065",
+        "TC-API-066",
+        "TC-API-067",
+        "TC-API-068"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-009",
+        "key": "data",
+        "name": "Quyền sở hữu dữ liệu và atomic audit",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-055",
+          "REQ-056",
+          "REQ-057",
+          "REQ-058",
+          "REQ-059",
+          "REQ-060"
+        ]
+      },
+      "work_package": {
+        "id": "WP-009",
+        "title": "Quyền sở hữu dữ liệu và atomic audit",
+        "feature_id": "F-009",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-055",
+          "REQ-056",
+          "REQ-057",
+          "REQ-058",
+          "REQ-059",
+          "REQ-060"
+        ],
+        "criterion_ids": [
+          "AC-057",
+          "AC-058",
+          "AC-059",
+          "AC-060",
+          "AC-061",
+          "AC-062",
+          "AC-063"
+        ],
+        "proposed_paths": [
+          "crates/data",
+          "packages/web-shell/data",
+          "tests/data"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-DATA",
+        "route": "/workspace/:tenantId/data",
+        "feature_id": "F-009",
+        "title": "Quyền sở hữu dữ liệu và atomic audit",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [],
+      "cases": [
+        "TC-AC-057",
+        "TC-AC-058",
+        "TC-AC-059",
+        "TC-AC-060",
+        "TC-AC-061",
+        "TC-AC-062",
+        "TC-AC-063"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-010",
+        "key": "artifacts",
+        "name": "Artifact, nguồn gốc và vòng đời dữ liệu",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-061",
+          "REQ-062",
+          "REQ-063",
+          "REQ-064",
+          "REQ-065",
+          "REQ-066",
+          "REQ-067",
+          "REQ-068"
+        ]
+      },
+      "work_package": {
+        "id": "WP-010",
+        "title": "Artifact, nguồn gốc và vòng đời dữ liệu",
+        "feature_id": "F-010",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-061",
+          "REQ-062",
+          "REQ-063",
+          "REQ-064",
+          "REQ-065",
+          "REQ-066",
+          "REQ-067",
+          "REQ-068"
+        ],
+        "criterion_ids": [
+          "AC-064",
+          "AC-065",
+          "AC-066",
+          "AC-067",
+          "AC-068",
+          "AC-069",
+          "AC-070",
+          "AC-071"
+        ],
+        "proposed_paths": [
+          "crates/artifacts",
+          "packages/web-shell/artifacts",
+          "tests/artifacts"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-ARTIFACTS",
+        "route": "/workspace/:tenantId/artifacts",
+        "feature_id": "F-010",
+        "title": "Artifact, nguồn gốc và vòng đời dữ liệu",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "artifact.begin",
+          "artifact.finalize",
+          "deletion.request"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "artifact.begin",
+          "feature_id": "F-010",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_artifact_begin",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "artifact.finalize",
+          "feature_id": "F-010",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_artifact_finalize",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "deletion.request",
+          "feature_id": "F-010",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_deletion_request",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-064",
+        "TC-AC-065",
+        "TC-AC-066",
+        "TC-AC-067",
+        "TC-AC-068",
+        "TC-AC-069",
+        "TC-AC-070",
+        "TC-AC-071",
+        "TC-API-069",
+        "TC-API-070",
+        "TC-API-071",
+        "TC-API-072",
+        "TC-API-073",
+        "TC-API-074",
+        "TC-API-075",
+        "TC-API-076",
+        "TC-API-077",
+        "TC-API-078",
+        "TC-API-079",
+        "TC-API-080"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-011",
+        "key": "workflow",
+        "name": "Durable workflow, checkpoint và bounded agent loop",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-069",
+          "REQ-070",
+          "REQ-071",
+          "REQ-072",
+          "REQ-073",
+          "REQ-074",
+          "REQ-075",
+          "REQ-076",
+          "REQ-077"
+        ]
+      },
+      "work_package": {
+        "id": "WP-011",
+        "title": "Durable workflow, checkpoint và bounded agent loop",
+        "feature_id": "F-011",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-069",
+          "REQ-070",
+          "REQ-071",
+          "REQ-072",
+          "REQ-073",
+          "REQ-074",
+          "REQ-075",
+          "REQ-076",
+          "REQ-077"
+        ],
+        "criterion_ids": [
+          "AC-072",
+          "AC-073",
+          "AC-074",
+          "AC-075",
+          "AC-076",
+          "AC-077",
+          "AC-078",
+          "AC-079",
+          "AC-080",
+          "AC-081"
+        ],
+        "proposed_paths": [
+          "crates/workflow",
+          "packages/web-shell/workflow",
+          "tests/workflow"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-WORKFLOW",
+        "route": "/workspace/:tenantId/workflow",
+        "feature_id": "F-011",
+        "title": "Durable workflow, checkpoint và bounded agent loop",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "run.start",
+          "run.cancel"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "run.start",
+          "feature_id": "F-011",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_run_start",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "run.cancel",
+          "feature_id": "F-011",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_run_cancel",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-072",
+        "TC-AC-073",
+        "TC-AC-074",
+        "TC-AC-075",
+        "TC-AC-076",
+        "TC-AC-077",
+        "TC-AC-078",
+        "TC-AC-079",
+        "TC-AC-080",
+        "TC-AC-081",
+        "TC-API-081",
+        "TC-API-082",
+        "TC-API-083",
+        "TC-API-084",
+        "TC-API-085",
+        "TC-API-086",
+        "TC-API-087",
+        "TC-API-088",
+        "TC-ST-0111",
+        "TC-ST-0112",
+        "TC-ST-0113",
+        "TC-ST-0114",
+        "TC-ST-0115",
+        "TC-ST-0116",
+        "TC-ST-0117",
+        "TC-ST-0118",
+        "TC-ST-0119",
+        "TC-ST-0120",
+        "TC-ST-0121",
+        "TC-ST-0122",
+        "TC-ST-0123",
+        "TC-ST-0124",
+        "TC-ST-0125",
+        "TC-ST-0126",
+        "TC-ST-0127",
+        "TC-ST-0128",
+        "TC-ST-0129",
+        "TC-ST-0130",
+        "TC-ST-0131",
+        "TC-ST-0132",
+        "TC-ST-0133",
+        "TC-ST-0134",
+        "TC-ST-0135",
+        "TC-ST-0136",
+        "TC-ST-0137",
+        "TC-ST-0138",
+        "TC-ST-0139",
+        "TC-ST-0140",
+        "TC-ST-0141",
+        "TC-ST-0142",
+        "TC-ST-0143",
+        "TC-ST-0144",
+        "TC-ST-0145",
+        "TC-ST-0146",
+        "TC-ST-0147",
+        "TC-ST-0148",
+        "TC-ST-0149",
+        "TC-ST-0150",
+        "TC-ST-0151",
+        "TC-ST-0152",
+        "TC-ST-0153",
+        "TC-ST-0154",
+        "TC-ST-0155",
+        "TC-ST-0156",
+        "TC-ST-0157",
+        "TC-ST-0158",
+        "TC-ST-0159",
+        "TC-ST-0160",
+        "TC-ST-0161",
+        "TC-ST-0162",
+        "TC-ST-0163",
+        "TC-ST-0164",
+        "TC-ST-0165",
+        "TC-ST-0166",
+        "TC-ST-0167",
+        "TC-ST-0168",
+        "TC-ST-0169",
+        "TC-ST-0170",
+        "TC-ST-0171",
+        "TC-ST-0172",
+        "TC-ST-0173",
+        "TC-ST-0174",
+        "TC-ST-0175",
+        "TC-ST-0176",
+        "TC-ST-0177",
+        "TC-ST-0178",
+        "TC-ST-0179",
+        "TC-ST-0180",
+        "TC-ST-0181",
+        "TC-ST-0182"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-012",
+        "key": "approval",
+        "name": "Phê duyệt bất biến và race resolution",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-078",
+          "REQ-079",
+          "REQ-080",
+          "REQ-081",
+          "REQ-082",
+          "REQ-083"
+        ]
+      },
+      "work_package": {
+        "id": "WP-012",
+        "title": "Phê duyệt bất biến và race resolution",
+        "feature_id": "F-012",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-078",
+          "REQ-079",
+          "REQ-080",
+          "REQ-081",
+          "REQ-082",
+          "REQ-083"
+        ],
+        "criterion_ids": [
+          "AC-082",
+          "AC-083",
+          "AC-084",
+          "AC-085",
+          "AC-086",
+          "AC-087"
+        ],
+        "proposed_paths": [
+          "crates/approval",
+          "packages/web-shell/approval",
+          "tests/approval"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-APPROVAL",
+        "route": "/workspace/:tenantId/approval",
+        "feature_id": "F-012",
+        "title": "Phê duyệt bất biến và race resolution",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success",
+          "pending",
+          "conflict",
+          "unknown"
+        ],
+        "actions": [
+          "approval.decide"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "approval.decide",
+          "feature_id": "F-012",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "REVIEWER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_approval_decide",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-082",
+        "TC-AC-083",
+        "TC-AC-084",
+        "TC-AC-085",
+        "TC-AC-086",
+        "TC-AC-087",
+        "TC-API-089",
+        "TC-API-090",
+        "TC-API-091",
+        "TC-API-092",
+        "TC-ST-0183",
+        "TC-ST-0184",
+        "TC-ST-0185",
+        "TC-ST-0186",
+        "TC-ST-0187",
+        "TC-ST-0188",
+        "TC-ST-0189",
+        "TC-ST-0190",
+        "TC-ST-0191",
+        "TC-ST-0192",
+        "TC-ST-0193",
+        "TC-ST-0194",
+        "TC-ST-0195",
+        "TC-ST-0196",
+        "TC-ST-0197",
+        "TC-ST-0198",
+        "TC-ST-0199",
+        "TC-ST-0200",
+        "TC-ST-0201",
+        "TC-ST-0202",
+        "TC-ST-0203",
+        "TC-ST-0204",
+        "TC-ST-0205",
+        "TC-ST-0206",
+        "TC-ST-0207",
+        "TC-ST-0208",
+        "TC-ST-0209",
+        "TC-ST-0210",
+        "TC-ST-0211",
+        "TC-ST-0212"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-013",
+        "key": "effects",
+        "name": "Effect broker và đối soát kết quả chưa biết",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-084",
+          "REQ-085",
+          "REQ-086",
+          "REQ-087",
+          "REQ-088",
+          "REQ-089",
+          "REQ-090",
+          "REQ-091"
+        ]
+      },
+      "work_package": {
+        "id": "WP-013",
+        "title": "Effect broker và đối soát kết quả chưa biết",
+        "feature_id": "F-013",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-084",
+          "REQ-085",
+          "REQ-086",
+          "REQ-087",
+          "REQ-088",
+          "REQ-089",
+          "REQ-090",
+          "REQ-091"
+        ],
+        "criterion_ids": [
+          "AC-088",
+          "AC-089",
+          "AC-090",
+          "AC-091",
+          "AC-092",
+          "AC-093",
+          "AC-094",
+          "AC-095"
+        ],
+        "proposed_paths": [
+          "crates/effects",
+          "packages/web-shell/effects",
+          "tests/effects"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-EFFECTS",
+        "route": "/workspace/:tenantId/effects",
+        "feature_id": "F-013",
+        "title": "Effect broker và đối soát kết quả chưa biết",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success",
+          "pending",
+          "conflict",
+          "unknown"
+        ],
+        "actions": [
+          "effect.propose",
+          "effect.dispatch",
+          "effect.reconcile",
+          "effect.compensate",
+          "kill-switch.set"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "effect.propose",
+          "feature_id": "F-013",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_effect_propose",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "effect.dispatch",
+          "feature_id": "F-013",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "PUBLISHER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_effect_dispatch",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "effect.reconcile",
+          "feature_id": "F-013",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_effect_reconcile",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "effect.compensate",
+          "feature_id": "F-013",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "PUBLISHER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_effect_compensate",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "kill-switch.set",
+          "feature_id": "F-013",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_kill_switch_set",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-088",
+        "TC-AC-089",
+        "TC-AC-090",
+        "TC-AC-091",
+        "TC-AC-092",
+        "TC-AC-093",
+        "TC-AC-094",
+        "TC-AC-095",
+        "TC-API-093",
+        "TC-API-094",
+        "TC-API-095",
+        "TC-API-096",
+        "TC-API-097",
+        "TC-API-098",
+        "TC-API-099",
+        "TC-API-100",
+        "TC-API-101",
+        "TC-API-102",
+        "TC-API-103",
+        "TC-API-104",
+        "TC-API-105",
+        "TC-API-106",
+        "TC-API-107",
+        "TC-API-108",
+        "TC-API-153",
+        "TC-API-154",
+        "TC-API-155",
+        "TC-API-156",
+        "TC-ST-0213",
+        "TC-ST-0214",
+        "TC-ST-0215",
+        "TC-ST-0216",
+        "TC-ST-0217",
+        "TC-ST-0218",
+        "TC-ST-0219",
+        "TC-ST-0220",
+        "TC-ST-0221",
+        "TC-ST-0222",
+        "TC-ST-0223",
+        "TC-ST-0224",
+        "TC-ST-0225",
+        "TC-ST-0226",
+        "TC-ST-0227",
+        "TC-ST-0228",
+        "TC-ST-0229",
+        "TC-ST-0230",
+        "TC-ST-0231",
+        "TC-ST-0232",
+        "TC-ST-0233",
+        "TC-ST-0234",
+        "TC-ST-0235",
+        "TC-ST-0236",
+        "TC-ST-0237",
+        "TC-ST-0238",
+        "TC-ST-0239",
+        "TC-ST-0240",
+        "TC-ST-0241",
+        "TC-ST-0242",
+        "TC-ST-0243",
+        "TC-ST-0244",
+        "TC-ST-0245",
+        "TC-ST-0246",
+        "TC-ST-0247",
+        "TC-ST-0248",
+        "TC-ST-0249",
+        "TC-ST-0250",
+        "TC-ST-0251",
+        "TC-ST-0252",
+        "TC-ST-0253",
+        "TC-ST-0254",
+        "TC-ST-0255",
+        "TC-ST-0256",
+        "TC-ST-0257",
+        "TC-ST-0258",
+        "TC-ST-0259",
+        "TC-ST-0260",
+        "TC-ST-0261",
+        "TC-ST-0262",
+        "TC-ST-0263",
+        "TC-ST-0264",
+        "TC-ST-0265",
+        "TC-ST-0266",
+        "TC-ST-0267",
+        "TC-ST-0268",
+        "TC-ST-0269",
+        "TC-ST-0270",
+        "TC-ST-0271",
+        "TC-ST-0272",
+        "TC-ST-0273",
+        "TC-ST-0274",
+        "TC-ST-0275",
+        "TC-ST-0276",
+        "TC-ST-0277",
+        "TC-ST-0278",
+        "TC-ST-0279",
+        "TC-ST-0280",
+        "TC-ST-0281",
+        "TC-ST-0282",
+        "TC-ST-0283",
+        "TC-ST-0284",
+        "TC-ST-0285",
+        "TC-ST-0286",
+        "TC-ST-0287",
+        "TC-ST-0288",
+        "TC-ST-0289",
+        "TC-ST-0290",
+        "TC-ST-0291",
+        "TC-ST-0292",
+        "TC-ST-0293",
+        "TC-ST-0294",
+        "TC-ST-0295",
+        "TC-ST-0296",
+        "TC-ST-0297",
+        "TC-ST-0298",
+        "TC-ST-0299",
+        "TC-ST-0300",
+        "TC-ST-0301",
+        "TC-ST-0302"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-014",
+        "key": "budget",
+        "name": "Ngân sách, quota và fairness",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-092",
+          "REQ-093",
+          "REQ-094",
+          "REQ-095",
+          "REQ-096",
+          "REQ-097",
+          "REQ-098"
+        ]
+      },
+      "work_package": {
+        "id": "WP-014",
+        "title": "Ngân sách, quota và fairness",
+        "feature_id": "F-014",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-092",
+          "REQ-093",
+          "REQ-094",
+          "REQ-095",
+          "REQ-096",
+          "REQ-097",
+          "REQ-098"
+        ],
+        "criterion_ids": [
+          "AC-096",
+          "AC-097",
+          "AC-098",
+          "AC-099",
+          "AC-100",
+          "AC-101",
+          "AC-102"
+        ],
+        "proposed_paths": [
+          "crates/budget",
+          "packages/web-shell/budget",
+          "tests/budget"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-BUDGET",
+        "route": "/workspace/:tenantId/budget",
+        "feature_id": "F-014",
+        "title": "Ngân sách, quota và fairness",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success",
+          "pending",
+          "conflict",
+          "unknown"
+        ],
+        "actions": [
+          "budget.configure"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "budget.configure",
+          "feature_id": "F-014",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_budget_configure",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-096",
+        "TC-AC-097",
+        "TC-AC-098",
+        "TC-AC-099",
+        "TC-AC-100",
+        "TC-AC-101",
+        "TC-AC-102",
+        "TC-API-109",
+        "TC-API-110",
+        "TC-API-111",
+        "TC-API-112",
+        "TC-ST-0303",
+        "TC-ST-0304",
+        "TC-ST-0305",
+        "TC-ST-0306",
+        "TC-ST-0307",
+        "TC-ST-0308",
+        "TC-ST-0309",
+        "TC-ST-0310",
+        "TC-ST-0311",
+        "TC-ST-0312",
+        "TC-ST-0313",
+        "TC-ST-0314"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-015",
+        "key": "models",
+        "name": "Provider adapter, OpenAI Responses và compaction",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-099",
+          "REQ-100",
+          "REQ-101",
+          "REQ-102",
+          "REQ-103",
+          "REQ-104",
+          "REQ-105",
+          "REQ-106",
+          "REQ-107"
+        ]
+      },
+      "work_package": {
+        "id": "WP-015",
+        "title": "Provider adapter, OpenAI Responses và compaction",
+        "feature_id": "F-015",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-099",
+          "REQ-100",
+          "REQ-101",
+          "REQ-102",
+          "REQ-103",
+          "REQ-104",
+          "REQ-105",
+          "REQ-106",
+          "REQ-107"
+        ],
+        "criterion_ids": [
+          "AC-103",
+          "AC-104",
+          "AC-105",
+          "AC-106",
+          "AC-107",
+          "AC-108",
+          "AC-109",
+          "AC-110",
+          "AC-111"
+        ],
+        "proposed_paths": [
+          "crates/models",
+          "packages/web-shell/models",
+          "tests/models"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-MODELS",
+        "route": "/workspace/:tenantId/models",
+        "feature_id": "F-015",
+        "title": "Provider adapter, OpenAI Responses và compaction",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success",
+          "pending",
+          "conflict",
+          "unknown"
+        ],
+        "actions": [
+          "provider.configure",
+          "provider.compact"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "provider.configure",
+          "feature_id": "F-015",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_provider_configure",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "provider.compact",
+          "feature_id": "F-015",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_provider_compact",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-103",
+        "TC-AC-104",
+        "TC-AC-105",
+        "TC-AC-106",
+        "TC-AC-107",
+        "TC-AC-108",
+        "TC-AC-109",
+        "TC-AC-110",
+        "TC-AC-111",
+        "TC-API-113",
+        "TC-API-114",
+        "TC-API-115",
+        "TC-API-116",
+        "TC-API-117",
+        "TC-API-118",
+        "TC-API-119",
+        "TC-API-120"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-016",
+        "key": "connectors",
+        "name": "OAuth connector, secret broker và MCP",
+        "phase": "C1",
+        "source": "SRC-CHAT-AUTH",
+        "requirement_ids": [
+          "REQ-108",
+          "REQ-109",
+          "REQ-110",
+          "REQ-111",
+          "REQ-112",
+          "REQ-113",
+          "REQ-114"
+        ]
+      },
+      "work_package": {
+        "id": "WP-016",
+        "title": "OAuth connector, secret broker và MCP",
+        "feature_id": "F-016",
+        "phase": "C1",
+        "single_owner_role": "Integration Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001",
+          "WP-007",
+          "WP-009"
+        ],
+        "requirement_ids": [
+          "REQ-108",
+          "REQ-109",
+          "REQ-110",
+          "REQ-111",
+          "REQ-112",
+          "REQ-113",
+          "REQ-114"
+        ],
+        "criterion_ids": [
+          "AC-112",
+          "AC-113",
+          "AC-114",
+          "AC-115",
+          "AC-116",
+          "AC-117",
+          "AC-118"
+        ],
+        "proposed_paths": [
+          "crates/connectors",
+          "packages/web-shell/connectors",
+          "tests/connectors"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-CONNECTORS",
+        "route": "/workspace/:tenantId/connectors",
+        "feature_id": "F-016",
+        "title": "OAuth connector, secret broker và MCP",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "connection.authorize",
+          "connection.revoke"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "connection.authorize",
+          "feature_id": "F-016",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_connection_authorize",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "connection.revoke",
+          "feature_id": "F-016",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_connection_revoke",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-112",
+        "TC-AC-113",
+        "TC-AC-114",
+        "TC-AC-115",
+        "TC-AC-116",
+        "TC-AC-117",
+        "TC-AC-118",
+        "TC-API-121",
+        "TC-API-122",
+        "TC-API-123",
+        "TC-API-124",
+        "TC-API-125",
+        "TC-API-126",
+        "TC-API-127",
+        "TC-API-128"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-017",
+        "key": "events",
+        "name": "Scheduler, event bus và replay",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-115",
+          "REQ-116",
+          "REQ-117",
+          "REQ-118",
+          "REQ-119",
+          "REQ-120"
+        ]
+      },
+      "work_package": {
+        "id": "WP-017",
+        "title": "Scheduler, event bus và replay",
+        "feature_id": "F-017",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-115",
+          "REQ-116",
+          "REQ-117",
+          "REQ-118",
+          "REQ-119",
+          "REQ-120"
+        ],
+        "criterion_ids": [
+          "AC-119",
+          "AC-120",
+          "AC-121",
+          "AC-122",
+          "AC-123",
+          "AC-124"
+        ],
+        "proposed_paths": [
+          "crates/events",
+          "packages/web-shell/events",
+          "tests/events"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-EVENTS",
+        "route": "/workspace/:tenantId/events",
+        "feature_id": "F-017",
+        "title": "Scheduler, event bus và replay",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "schedule.create",
+          "deadletter.replay"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "schedule.create",
+          "feature_id": "F-017",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_schedule_create",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "deadletter.replay",
+          "feature_id": "F-017",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_deadletter_replay",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-119",
+        "TC-AC-120",
+        "TC-AC-121",
+        "TC-AC-122",
+        "TC-AC-123",
+        "TC-AC-124",
+        "TC-API-129",
+        "TC-API-130",
+        "TC-API-131",
+        "TC-API-132",
+        "TC-API-133",
+        "TC-API-134",
+        "TC-API-135",
+        "TC-API-136"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-018",
+        "key": "ui",
+        "name": "React shell và UI plugin",
+        "phase": "C1",
+        "source": "SRC-CHAT-01",
+        "requirement_ids": [
+          "REQ-121",
+          "REQ-122",
+          "REQ-123",
+          "REQ-124",
+          "REQ-125",
+          "REQ-126",
+          "REQ-127"
+        ]
+      },
+      "work_package": {
+        "id": "WP-018",
+        "title": "React shell và UI plugin",
+        "feature_id": "F-018",
+        "phase": "C1",
+        "single_owner_role": "Frontend Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-121",
+          "REQ-122",
+          "REQ-123",
+          "REQ-124",
+          "REQ-125",
+          "REQ-126",
+          "REQ-127"
+        ],
+        "criterion_ids": [
+          "AC-125",
+          "AC-126",
+          "AC-127",
+          "AC-128",
+          "AC-129",
+          "AC-130",
+          "AC-131"
+        ],
+        "proposed_paths": [
+          "crates/ui",
+          "packages/web-shell/ui",
+          "tests/ui"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-UI",
+        "route": "/workspace/:tenantId/ui",
+        "feature_id": "F-018",
+        "title": "React shell và UI plugin",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "ui.register"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "ui.register",
+          "feature_id": "F-018",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_ui_register",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-125",
+        "TC-AC-126",
+        "TC-AC-127",
+        "TC-AC-128",
+        "TC-AC-129",
+        "TC-AC-130",
+        "TC-AC-131",
+        "TC-API-137",
+        "TC-API-138",
+        "TC-API-139",
+        "TC-API-140"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-019",
+        "key": "search-export",
+        "name": "Tìm kiếm, thông báo và export có quyền",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-128",
+          "REQ-129",
+          "REQ-130",
+          "REQ-131",
+          "REQ-132",
+          "REQ-133"
+        ]
+      },
+      "work_package": {
+        "id": "WP-019",
+        "title": "Tìm kiếm, thông báo và export có quyền",
+        "feature_id": "F-019",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-128",
+          "REQ-129",
+          "REQ-130",
+          "REQ-131",
+          "REQ-132",
+          "REQ-133"
+        ],
+        "criterion_ids": [
+          "AC-132",
+          "AC-133",
+          "AC-134",
+          "AC-135",
+          "AC-136",
+          "AC-137"
+        ],
+        "proposed_paths": [
+          "crates/search-export",
+          "packages/web-shell/search-export",
+          "tests/search-export"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-SEARCH-EXPORT",
+        "route": "/workspace/:tenantId/search-export",
+        "feature_id": "F-019",
+        "title": "Tìm kiếm, thông báo và export có quyền",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "export.create",
+          "notification.read"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "export.create",
+          "feature_id": "F-019",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_export_create",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "notification.read",
+          "feature_id": "F-019",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_notification_read",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-132",
+        "TC-AC-133",
+        "TC-AC-134",
+        "TC-AC-135",
+        "TC-AC-136",
+        "TC-AC-137",
+        "TC-API-141",
+        "TC-API-142",
+        "TC-API-143",
+        "TC-API-144",
+        "TC-API-145",
+        "TC-API-146",
+        "TC-API-147",
+        "TC-API-148"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-020",
+        "key": "audit",
+        "name": "Quan sát, audit và support access",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-134",
+          "REQ-135",
+          "REQ-136",
+          "REQ-137",
+          "REQ-138",
+          "REQ-139"
+        ]
+      },
+      "work_package": {
+        "id": "WP-020",
+        "title": "Quan sát, audit và support access",
+        "feature_id": "F-020",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-134",
+          "REQ-135",
+          "REQ-136",
+          "REQ-137",
+          "REQ-138",
+          "REQ-139"
+        ],
+        "criterion_ids": [
+          "AC-138",
+          "AC-139",
+          "AC-140",
+          "AC-141",
+          "AC-142",
+          "AC-143"
+        ],
+        "proposed_paths": [
+          "crates/audit",
+          "packages/web-shell/audit",
+          "tests/audit"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-AUDIT",
+        "route": "/workspace/:tenantId/audit",
+        "feature_id": "F-020",
+        "title": "Quan sát, audit và support access",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "support.request"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "support.request",
+          "feature_id": "F-020",
+          "phase": "C1",
+          "roles_candidate": [
+            "OWNER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_support_request",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-138",
+        "TC-AC-139",
+        "TC-AC-140",
+        "TC-AC-141",
+        "TC-AC-142",
+        "TC-AC-143",
+        "TC-API-149",
+        "TC-API-150",
+        "TC-API-151",
+        "TC-API-152"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-021",
+        "key": "operations",
+        "name": "Backup, deploy, migration và supply chain",
+        "phase": "C1",
+        "source": "SRC-ANNEX",
+        "requirement_ids": [
+          "REQ-140",
+          "REQ-141",
+          "REQ-142",
+          "REQ-143",
+          "REQ-144",
+          "REQ-145",
+          "REQ-146"
+        ]
+      },
+      "work_package": {
+        "id": "WP-021",
+        "title": "Backup, deploy, migration và supply chain",
+        "feature_id": "F-021",
+        "phase": "C1",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-140",
+          "REQ-141",
+          "REQ-142",
+          "REQ-143",
+          "REQ-144",
+          "REQ-145",
+          "REQ-146"
+        ],
+        "criterion_ids": [
+          "AC-144",
+          "AC-145",
+          "AC-146",
+          "AC-147",
+          "AC-148",
+          "AC-149",
+          "AC-150"
+        ],
+        "proposed_paths": [
+          "crates/operations",
+          "packages/web-shell/operations",
+          "tests/operations"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-OPERATIONS",
+        "route": "/workspace/:tenantId/operations",
+        "feature_id": "F-021",
+        "title": "Backup, deploy, migration và supply chain",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "release.qualify"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "release.qualify",
+          "feature_id": "F-021",
+          "phase": "C1",
+          "roles_candidate": [
+            "PLATFORM_OPERATOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_release_qualify",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-144",
+        "TC-AC-145",
+        "TC-AC-146",
+        "TC-AC-147",
+        "TC-AC-148",
+        "TC-AC-149",
+        "TC-AC-150",
+        "TC-API-157",
+        "TC-API-158",
+        "TC-API-159",
+        "TC-API-160"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-022",
+        "key": "marketplace",
+        "name": "Catalog plugin, curation và marketplace",
+        "phase": "C2",
+        "source": "SRC-CHAT-01",
+        "requirement_ids": [
+          "REQ-147",
+          "REQ-148",
+          "REQ-149",
+          "REQ-150",
+          "REQ-151",
+          "REQ-152"
+        ]
+      },
+      "work_package": {
+        "id": "WP-022",
+        "title": "Catalog plugin, curation và marketplace",
+        "feature_id": "F-022",
+        "phase": "C2",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-147",
+          "REQ-148",
+          "REQ-149",
+          "REQ-150",
+          "REQ-151",
+          "REQ-152"
+        ],
+        "criterion_ids": [
+          "AC-151",
+          "AC-152",
+          "AC-153",
+          "AC-154",
+          "AC-155",
+          "AC-156"
+        ],
+        "proposed_paths": [
+          "crates/marketplace",
+          "packages/web-shell/marketplace",
+          "tests/marketplace"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-MARKETPLACE",
+        "route": "/workspace/:tenantId/marketplace",
+        "feature_id": "F-022",
+        "title": "Catalog plugin, curation và marketplace",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "catalog.submit",
+          "catalog.review"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "catalog.submit",
+          "feature_id": "F-022",
+          "phase": "C2",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_catalog_submit",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        },
+        {
+          "operation": "catalog.review",
+          "feature_id": "F-022",
+          "phase": "C2",
+          "roles_candidate": [
+            "SECURITY_REVIEWER"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": true,
+          "request_schema": "Command_catalog_review",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-151",
+        "TC-AC-152",
+        "TC-AC-153",
+        "TC-AC-154",
+        "TC-AC-155",
+        "TC-AC-156",
+        "TC-API-161",
+        "TC-API-162",
+        "TC-API-163",
+        "TC-API-164",
+        "TC-API-165",
+        "TC-API-166",
+        "TC-API-167",
+        "TC-API-168"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    },
+    {
+      "namespace": "MASONWING@1.0.1",
+      "product": "masonwing",
+      "feature": {
+        "id": "F-023",
+        "key": "sdk",
+        "name": "SDK, conformance và developer experience",
+        "phase": "C2",
+        "source": "SRC-CHAT-01",
+        "requirement_ids": [
+          "REQ-153",
+          "REQ-154",
+          "REQ-155",
+          "REQ-156",
+          "REQ-157",
+          "REQ-158"
+        ]
+      },
+      "work_package": {
+        "id": "WP-023",
+        "title": "SDK, conformance và developer experience",
+        "feature_id": "F-023",
+        "phase": "C2",
+        "single_owner_role": "Platform Lead",
+        "reviewer_role": "Independent QA + relevant security/domain reviewer",
+        "assignee_identity": "NOT_ASSIGNED",
+        "dependency_ids": [
+          "WP-001"
+        ],
+        "requirement_ids": [
+          "REQ-153",
+          "REQ-154",
+          "REQ-155",
+          "REQ-156",
+          "REQ-157",
+          "REQ-158"
+        ],
+        "criterion_ids": [
+          "AC-157",
+          "AC-158",
+          "AC-159",
+          "AC-160",
+          "AC-161",
+          "AC-162"
+        ],
+        "proposed_paths": [
+          "crates/sdk",
+          "packages/web-shell/sdk",
+          "tests/sdk"
+        ],
+        "deliverables": [
+          "Implementation of owned public contracts",
+          "Unit/integration and deny-path assertions",
+          "UI states where applicable",
+          "Migration/rollback compatibility evidence",
+          "Redacted logs and actual screenshots where required"
+        ],
+        "ready_definition": "Scope/assumptions for slice confirmed;named assignee/reviewer;dependency contracts available;failing test fixtures authored",
+        "done_definition": "Owned criteria and impacted shared/NFR tests have matching real evidence and independent review",
+        "planning_only": true,
+        "implementation_status": "NOT_STARTED"
+      },
+      "screen": {
+        "id": "SCREEN-SDK",
+        "route": "/workspace/:tenantId/sdk",
+        "feature_id": "F-023",
+        "title": "SDK, conformance và developer experience",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "offline",
+          "stale",
+          "forbidden",
+          "success"
+        ],
+        "actions": [
+          "conformance.run"
+        ],
+        "viewports": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "themes": [
+          "light",
+          "dark"
+        ],
+        "text_scales": [
+          100,
+          200
+        ],
+        "capture": [
+          "top",
+          "end"
+        ],
+        "prototype_status": "NO_APPROVED_VISUAL_PROTOTYPE",
+        "source_hash_required": true
+      },
+      "commands": [
+        {
+          "operation": "conformance.run",
+          "feature_id": "F-023",
+          "phase": "C2",
+          "roles_candidate": [
+            "OWNER",
+            "EDITOR"
+          ],
+          "service_access": "only explicit delegation;no default role inheritance",
+          "step_up": false,
+          "request_schema": "Command_conformance_run",
+          "response_schema": "CommandReceipt",
+          "async_result": "resource projection/run/effect;never infer publication from command success",
+          "idempotency_scope": "tenant+principal+operation+key",
+          "owner_assumption": "A-SEC"
+        }
+      ],
+      "cases": [
+        "TC-AC-157",
+        "TC-AC-158",
+        "TC-AC-159",
+        "TC-AC-160",
+        "TC-AC-161",
+        "TC-AC-162",
+        "TC-API-169",
+        "TC-API-170",
+        "TC-API-171",
+        "TC-API-172"
+      ],
+      "implementation_status": "SCAFFOLD_NOT_ACCEPTED"
+    }
+  ]
+}

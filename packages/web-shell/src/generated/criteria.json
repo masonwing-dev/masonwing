@@ -1,0 +1,3080 @@
+[
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-001",
+    "product": "masonwing",
+    "feature_id": "F-001",
+    "title": "Lắp ghép sản phẩm",
+    "preconditions": [
+      "product A bật document-review; marketing không được cài",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "khởi động product A",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "route document-review tồn tại; route marketing trả 404; không tạo bảng marketing"
+    ],
+    "suite_id": "TS-COMPOSITION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-002",
+    "product": "masonwing",
+    "feature_id": "F-001",
+    "title": "Không rò nghiệp vụ vào kernel",
+    "preconditions": [
+      "kernel digest K và hai fixture document-review, marketing",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "build hai sản phẩm dùng K",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "kernel digest giống nhau; cả hai fixture hoàn thành workflow được khai báo"
+    ],
+    "suite_id": "TS-COMPOSITION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-003",
+    "product": "masonwing",
+    "feature_id": "F-001",
+    "title": "Không bắt buộc AI",
+    "preconditions": [
+      "fixture checksum chỉ có input artifact và deterministic handler",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "thực thi workflow",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "output hash đúng fixture; provider calls=0; không yêu cầu model key"
+    ],
+    "suite_id": "TS-COMPOSITION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-004",
+    "product": "masonwing",
+    "feature_id": "F-001",
+    "title": "Cấu hình không hợp lệ",
+    "preconditions": [
+      "manifest khai báo capability không có trong registry",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "activate sản phẩm",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CONFIG_UNSUPPORTED; readiness=false; tenant routes chưa được phục vụ"
+    ],
+    "suite_id": "TS-COMPOSITION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-005",
+    "product": "masonwing",
+    "feature_id": "F-001",
+    "title": "Bản đóng gói tái sử dụng",
+    "preconditions": [
+      "sample app bên ngoài monorepo dùng package phát hành",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "build và chạy conformance smoke",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không có source fork; compatible contract hoạt động; digest package có trong lockfile"
+    ],
+    "suite_id": "TS-COMPOSITION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-006",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Manifest có phiên bản",
+    "preconditions": [
+      "manifest fixture hợp lệ và schema 1.0.0",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "verify manifest",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "kết quả VALID gắn schema version và artifact digest"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-007",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Chu trình dependency",
+    "preconditions": [
+      "plugin A cần B và B cần A",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resolve graph",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DEPENDENCY_CYCLE kèm đường chu trình; migrations=0; installed registry không đổi"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-008",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Dependency thiếu",
+    "preconditions": [
+      "plugin A yêu cầu contract x@2; chỉ có x@1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resolve A",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DEPENDENCY_UNSATISFIED; không tải runtime code"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-009",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Artifact bị tráo",
+    "preconditions": [
+      "artifact bytes đã sửa sau ký",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "install plugin",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ARTIFACT_INTEGRITY; handler calls=0; artifact QUARANTINED"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-010",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Lockfile tái lập",
+    "preconditions": [
+      "registry có hai phiên bản tương thích",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resolve rồi resolve với lockfile đã sinh",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "lần hai chọn cùng digests; không tự lấy bản mới"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-011",
+    "product": "masonwing",
+    "feature_id": "F-002",
+    "title": "Phạm vi extension point",
+    "preconditions": [
+      "module A truy cập điểm riêng của B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "register contribution",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "EXTENSION_SCOPE_DENIED; B không bị thay handler"
+    ],
+    "suite_id": "TS-REGISTRY"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-012",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Cài nhưng chưa chạy",
+    "preconditions": [
+      "manifest đã verify; migration additive thành công",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "commit install",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "state INSTALLED_DISABLED; handler chưa nhận việc"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-013",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Quyền khi bật plugin",
+    "preconditions": [
+      "plugin xin read và publish; admin chỉ cấp read",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "enable rồi gọi publish",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "read hoạt động; publish CAPABILITY_DENIED; provider mutation=0"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-014",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Pin phiên bản run",
+    "preconditions": [
+      "v1 đang active; tạo run R; sau đó cài v2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resume R",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "R dùng digest v1; run mới dùng v2 theo rollout policy"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-015",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Drain trước disable",
+    "preconditions": [
+      "v1 có một run đang chạy",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "disable v1",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "new run bị PLUGIN_DRAINING; run cũ tiếp tục theo cancellation policy"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-016",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Thu hồi khẩn cấp",
+    "preconditions": [
+      "run v1 đã pin nhưng signer hoặc digest bị revoke",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gọi host action kế tiếp",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "PLUGIN_REVOKED; external calls=0 sau điểm enforcement; run chuyển BLOCKED"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-017",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Giữ dữ liệu khi uninstall",
+    "preconditions": [
+      "run hoàn tất còn liên kết evidence thuộc plugin",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "uninstall với chế độ retain",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "UI plugin biến mất; audit và evidence vẫn truy xuất bởi auditor được phép"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-018",
+    "product": "masonwing",
+    "feature_id": "F-003",
+    "title": "Migration không rollback được",
+    "preconditions": [
+      "migration ghi dữ liệu không tương thích v1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "operator yêu cầu rollback v1",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ROLLBACK_UNSAFE; không deploy v1; cung cấp forward-repair runbook"
+    ],
+    "suite_id": "TS-LIFECYCLE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-019",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Không tự nâng trust",
+    "preconditions": [
+      "tenant uploader gửi native artifact",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "install",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "TRUST_CLASS_DENIED; process library chưa nạp"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-020",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Capability handles",
+    "preconditions": [
+      "Wasm plugin chỉ có artifact.read cho artifact A",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "plugin đọc artifact B",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "RESOURCE_DENIED; nội dung B không có trong result hay logs"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-021",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Ngắt vòng lặp vô hạn",
+    "preconditions": [
+      "Wasm fixture vòng lặp vô hạn; profile L-WASM",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "invoke",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "SANDBOX_LIMIT; host health vẫn OK; invocation kết thúc trong deadline profile"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-022",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Host I/O bị treo",
+    "preconditions": [
+      "mock host HTTP không trả body",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "plugin chờ HTTP",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "HOST_IO_TIMEOUT trong giới hạn; không giữ worker lease vô hạn"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-023",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Egress chống SSRF — case 1",
+    "preconditions": [
+      "URL đổi DNS sang loopback hoặc metadata address",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request qua egress broker",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "EGRESS_DENIED; TCP tới địa chỉ cấm=0"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-024",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Egress chống SSRF — case 2",
+    "preconditions": [
+      "redirect HTTPS từ public sang private subnet",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "follow redirect qua broker",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "EGRESS_DENIED; credentials không chuyển sang origin khác"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-025",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "RPC có fence",
+    "preconditions": [
+      "worker W1 lease=1 hết hạn; W2 có lease=2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "W1 gửi completion",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "STALE_FENCE; output W2 không bị ghi đè"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-026",
+    "product": "masonwing",
+    "feature_id": "F-004",
+    "title": "Dọn sandbox",
+    "preconditions": [
+      "invocation tạo temp artifact và handle H",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "invocation kết thúc",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "H không dùng lại được; temp không còn sau cleanup deadline; retained artifact không bị xóa"
+    ],
+    "suite_id": "TS-SANDBOX"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-027",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Login bằng redirect",
+    "preconditions": [
+      "browser chưa có session",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "GET /auth/login với return_to nội bộ",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "redirect tới issuer đã allowlist; state, nonce, PKCE transaction dùng một lần"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-028",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Callback hợp lệ",
+    "preconditions": [
+      "mock issuer trả token đúng issuer, audience, nonce; code chưa dùng",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "GET /auth/callback",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "session mới gắn issuer+sub; cookie HttpOnly Secure; tokens không xuất hiện trong response body"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-029",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Callback giả hoặc replay",
+    "preconditions": [
+      "state mismatch, nonce mismatch, issuer mismatch hoặc code replay",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi callback cho từng fixture",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "401 AUTH_INVALID_CALLBACK; session count không tăng; không lộ token"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-030",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Redirect đích không tin cậy",
+    "preconditions": [
+      "return_to=https://attacker.example hoặc //attacker.example",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "start login",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "400 RETURN_TARGET_DENIED; không redirect ra origin lạ"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-031",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Không dùng password grant",
+    "preconditions": [
+      "request username/password tới BFF",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi password-grant request",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "AUTH_FLOW_UNSUPPORTED; Keycloak grant calls=0; mật khẩu không ghi log"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-032",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Discovery trust",
+    "preconditions": [
+      "discovery có issuer khác hoặc endpoint private ngoài allowlist",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "activate identity adapter",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ISSUER_TRUST_FAILED; không tải JWKS qua endpoint lạ"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-033",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Không ghép account bằng email",
+    "preconditions": [
+      "IdP A/sub1 và B/sub2 cùng email",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "đăng nhập lần lượt",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "hai identity records; membership không chuyển qua email match"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-034",
+    "product": "masonwing",
+    "feature_id": "F-005",
+    "title": "Recovery qua identity provider",
+    "preconditions": [
+      "user ở login/account settings",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "open recovery hoặc MFA enrollment",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "đến verified IdP flow; app không thu password reset token hoặc tự đổi credential database"
+    ],
+    "suite_id": "TS-OIDC"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-035",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Chống session fixation",
+    "preconditions": [
+      "session guest có ID S",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "login hoặc hoàn tất step-up",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ID mới khác S; S không dùng được để gọi API"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-036",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "CSRF cho cookie API",
+    "preconditions": [
+      "attacker origin hoặc token thiếu",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "POST request ghi dữ liệu",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "403 CSRF_REJECTED; state version không đổi"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-037",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Expiry phiên",
+    "preconditions": [
+      "virtual clock đúng expiry hoặc vượt expiry",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "GET /session",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "401 SESSION_EXPIRED; không gia hạn phiên đã hết hạn"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-038",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Logout ứng dụng",
+    "preconditions": [
+      "session S đang active",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "POST /auth/logout",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "S bị revoke; API dùng S trả 401"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-039",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Backchannel logout — case 1",
+    "preconditions": [
+      "logout token có sid hợp lệ đúng issuer/audience",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "POST /auth/backchannel-logout",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "các phiên matching bị revoke; unrelated sessions còn active"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-040",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Backchannel logout — case 2",
+    "preconditions": [
+      "logout token sai chữ ký hoặc replay jti",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi logout event",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "sai chữ ký bị từ chối; replay idempotent; không revoke unrelated subject"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-041",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Invitation một lần",
+    "preconditions": [
+      "invite đúng tenant/email đã verify; chưa hết hạn",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "hai request accept đồng thời",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một membership; response replay trả cùng membership; không thêm role khác"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-042",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Owner cuối cùng",
+    "preconditions": [
+      "tenant có đúng một owner",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "remove hoặc demote owner",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "409 LAST_OWNER; membership không đổi"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-043",
+    "product": "masonwing",
+    "feature_id": "F-006",
+    "title": "Thu hồi phiên trên giao diện",
+    "preconditions": [
+      "browser đang mở tenant A với SSE và cache",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "admin revoke membership",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "SSE tenant A đóng theo L-REVOKE; cache A bị xóa; deep link trả 404"
+    ],
+    "suite_id": "TS-SESSIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-044",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Deny mặc định",
+    "preconditions": [
+      "user có membership nhưng action chưa được grant",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gọi action",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "403 AUTHZ_DENIED; mutation=0"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-045",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Forbid ưu tiên",
+    "preconditions": [
+      "policy permit publish và forbid frozen-tenant",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "publish trong frozen tenant",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "403 AUTHZ_DENIED; provider calls=0"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-046",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Policy evaluation lỗi",
+    "preconditions": [
+      "permit khớp; forbid thiếu attribute gây diagnostics",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gọi action",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "AUTHZ_EVALUATION_ERROR; không chạy effect; audit ghi diagnostic code không chứa secrets"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-047",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Không lộ tenant khác",
+    "preconditions": [
+      "user tenant A; ID thật của B và ID không tồn tại",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "GET từng ID",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "cùng 404 RESOURCE_NOT_FOUND shape; không lộ tên, existence, signed URL hay result count"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-048",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Quyền hiện hành cho write",
+    "preconditions": [
+      "approval còn hạn nhưng publisher bị revoke trước dispatch",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "worker dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "403 AUTHZ_DENIED; mutation transmit=0"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-049",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Không tin scope từ client",
+    "preconditions": [
+      "body tenant_id=B nhưng route/session thuộc A",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit command",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "TENANT_CONTEXT_MISMATCH; không chọn B theo body"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-050",
+    "product": "masonwing",
+    "feature_id": "F-007",
+    "title": "Step-up cho tác vụ nhạy cảm",
+    "preconditions": [
+      "owner có session thường; action secret.rotate",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request action",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "STEP_UP_REQUIRED; sau verified MFA dưới L-STEPUP thì được đánh giá quyền tiếp"
+    ],
+    "suite_id": "TS-AUTHORIZATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-051",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Machine audience",
+    "preconditions": [
+      "token staging dùng trên API production",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "worker gửi command",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "401 TOKEN_AUDIENCE_INVALID; command chưa enqueue"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-052",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Phạm vi delegation",
+    "preconditions": [
+      "run chỉ được draft article A; plugin có publish rộng hơn",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "tool publish A",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DELEGATION_DENIED; external calls=0"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-053",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Automation grant tách session",
+    "preconditions": [
+      "creator đã logout; automation grant còn active",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "scheduler tick",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "run gắn grant ID và tenant; không sử dụng cookie creator"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-054",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Grant hết hạn",
+    "preconditions": [
+      "clock=expires_at; queued action chưa transmit",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DELEGATION_EXPIRED; transmit=0"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-055",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Không tăng quyền qua nội dung",
+    "preconditions": [
+      "tool arguments chứa role=owner và tenant_id khác",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "execute tool proposal",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CAPABILITY_ESCALATION_DENIED; granted set không đổi"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-056",
+    "product": "masonwing",
+    "feature_id": "F-008",
+    "title": "Không kế thừa mặc định giữa agent",
+    "preconditions": [
+      "parent chỉ read A; child xin read A,B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "spawn child",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "child grant không có B; request vượt scope bị từ chối"
+    ],
+    "suite_id": "TS-DELEGATION"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-057",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Schema ownership",
+    "preconditions": [
+      "plugin A không có query contract B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "A đọc record nội bộ B",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DATA_SCOPE_DENIED; không trả raw SQL handle"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-058",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Audit cùng transaction",
+    "preconditions": [
+      "inject audit write failure trong mutation",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit update",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "transaction rollback; không tồn tại business update thiếu audit"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-059",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Optimistic concurrency — case 1",
+    "preconditions": [
+      "resource version 2; request If-Match=1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "update",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "409 STALE_VERSION; resource giữ v2"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-060",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Optimistic concurrency — case 2",
+    "preconditions": [
+      "hai writer cùng base version=2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi hai update đồng thời",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một update thành công v3; bên thua 409; không merge ngầm"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-061",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "RLS tenant",
+    "preconditions": [
+      "RLS fixture A/B; runtime DB role không owner/BYPASSRLS",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "chạy negative isolation suite",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không đọc hoặc ghi record B từ tenant A kể cả connection reuse"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-062",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Transactional outbox",
+    "preconditions": [
+      "process bị kill ngay sau commit mutation",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "restart dispatcher",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "business event được giao; không mất acknowledged intent"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-063",
+    "product": "masonwing",
+    "feature_id": "F-009",
+    "title": "Input validation",
+    "preconditions": [
+      "unknown field, payload quá lớn hoặc số ngoài range",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi command cho từng vector",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "400 hoặc 413 theo error catalog; mutation=0"
+    ],
+    "suite_id": "TS-DATA"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-064",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Artifact bất biến",
+    "preconditions": [
+      "upload bytes B rồi finalize",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "đọc và thử ghi lại cùng artifact ID",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "digest=SHA256(B); overwrite trả IMMUTABLE_ARTIFACT"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-065",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Signed URL có scope",
+    "preconditions": [
+      "user được đọc A, không B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request download A",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "locator chỉ đọc A; expires theo L-SIGNEDURL; không liệt kê bucket"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-066",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Chống nội dung upload nguy hiểm",
+    "preconditions": [
+      "polyglot HTML/image hoặc malware fixture",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "finalize upload",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "QUARANTINED; preview, model retrieval, public link=0"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-067",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Retraction propagation",
+    "preconditions": [
+      "source S được dùng bởi derived D",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "revoke S",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "D marked INVALIDATED; retrieval không trả D; active workflows chuyển BLOCKED"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-068",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Xóa tới dữ liệu dẫn xuất",
+    "preconditions": [
+      "subject data có cache, index, export, external publication",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "execute deletion",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "active cache/index bị xóa; external references ghi pending action; không báo xóa toàn bộ khi chưa chứng minh"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-069",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Legal hold",
+    "preconditions": [
+      "retention hết hạn nhưng hold active",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "retention job",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "HELD; dữ liệu không bị xóa; audit thể hiện hold owner"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-070",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Backup không hồi sinh dữ liệu xóa",
+    "preconditions": [
+      "backup trước yêu cầu xóa S; tombstone sau đó",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "restore",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "S không đọc được trước readiness; restore report ghi tombstone replay"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-071",
+    "product": "masonwing",
+    "feature_id": "F-010",
+    "title": "Mã hóa payload riêng tư",
+    "preconditions": [
+      "provider conversation/token blob có synthetic secret; database backup được tạo",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "inspect backup without secret-manager key",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không giải mã được secret; key material không có trong app database dump"
+    ],
+    "suite_id": "TS-ARTIFACTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-072",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Bắt đầu run có idempotency — case 1",
+    "preconditions": [
+      "idempotency key K và fingerprint P chưa tồn tại",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "POST /runs hai lần với K,P",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "cùng run ID; một root execution"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-073",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Bắt đầu run có idempotency — case 2",
+    "preconditions": [
+      "K đã dùng với fingerprint P1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "POST /runs với K,P2",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "409 IDEMPOTENCY_CONFLICT; không tạo run mới"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-074",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Phục hồi sau crash",
+    "preconditions": [
+      "worker chết sau completed checkpoint và trước bước kế",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "restart worker",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "bước hoàn tất không bị ghi thành pending; bước kế được điều phối một lần theo logical ID"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-075",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Chờ phê duyệt không giữ worker",
+    "preconditions": [
+      "100 run WAITING_APPROVAL",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "đọc capacity và approve một run",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "100 durable waits; worker slot không bị chiếm bởi idle waits; đúng run được resume"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-076",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Giới hạn vòng lặp",
+    "preconditions": [
+      "profile max_turns=8; model liên tục xin thêm tool",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "thực thi lượt vượt giới hạn",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "LIMIT_REACHED; model/tool calls sau limit=0"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-077",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Transition trái phép",
+    "preconditions": [
+      "run SUCCEEDED",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit resume",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "409 ILLEGAL_TRANSITION; state SUCCEEDED không đổi"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-078",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Cancel phân biệt đã gửi",
+    "preconditions": [
+      "remote request đã qua point of no return",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "cancel run",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CANCEL_REQUESTED; không báo effect undone; reconciliation vẫn được phép"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-079",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Replay deterministic",
+    "preconditions": [
+      "v2 replay history v1 không tương thích",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resume",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "REPLAY_INCOMPATIBLE; transmit=0; operator có history reference"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-080",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Workflow definition validation",
+    "preconditions": [
+      "workflow gọi handler không tồn tại hoặc cycle không có loop bound",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "install workflow definition",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "WORKFLOW_INVALID; created runs=0; no model/provider calls"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-081",
+    "product": "masonwing",
+    "feature_id": "F-011",
+    "title": "Workflow input/output validation",
+    "preconditions": [
+      "node A trả object thiếu field cho node B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "complete A",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "NODE_OUTPUT_INVALID; B chưa dispatch; invalid result retained as quarantined diagnostic"
+    ],
+    "suite_id": "TS-WORKFLOW"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-082",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Approval bind digest",
+    "preconditions": [
+      "proposal P hash H target A v2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "approve P",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "approval record chứa H,A,v2 và actor; không cấp blanket permission"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-083",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Nội dung thay sau duyệt",
+    "preconditions": [
+      "approved H1; draft hiện tại H2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "APPROVAL_STALE; transmit=0"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-084",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Expiry approval",
+    "preconditions": [
+      "approval expires_at=T; authoritative time=T",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "APPROVAL_EXPIRED; transmit=0"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-085",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Race approve cancel",
+    "preconditions": [
+      "approval PENDING version1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "approve và cancel đồng thời",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một terminal decision; loser 409 DECISION_CONFLICT; audit ghi winner"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-086",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Tách người tạo và người duyệt",
+    "preconditions": [
+      "policy requires distinct approver; author A",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "A approve",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "403 FOUR_EYES_REQUIRED; proposal còn PENDING"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-087",
+    "product": "masonwing",
+    "feature_id": "F-012",
+    "title": "Preview đúng target",
+    "preconditions": [
+      "proposal có before/after và target domain",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "mở approval UI",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "UI hiển thị cùng digests trong API; không dùng latest draft để thay preview"
+    ],
+    "suite_id": "TS-APPROVAL"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-088",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Intent trước transmit",
+    "preconditions": [
+      "broker có authorized effect",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch với fault trước network",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "effect intent tồn tại trước bất kỳ provider acceptance nào"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-089",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Unknown timeout",
+    "preconditions": [
+      "provider nhận request rồi cắt TCP trước response",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "OUTCOME_UNKNOWN; resend count=0; reconciliation queued"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-090",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Receipt có bằng chứng",
+    "preconditions": [
+      "remote operation ID đã tồn tại sau timeout",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "reconcile",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "SUCCEEDED cùng remote ID/version/hash; không suy ra thành công từ HTTP retry count"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-091",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Không chứng minh được absence",
+    "preconditions": [
+      "provider không có key hoặc lookup đáng tin",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "reconcile",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "MANUAL_REVIEW; không gửi lại; UI nói kết quả chưa xác định"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-092",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Idempotency fingerprint",
+    "preconditions": [
+      "K đã gắn content H1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit K,H2",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "409 IDEMPOTENCY_CONFLICT; intent gốc không đổi"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-093",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Kill switch trước PONR",
+    "preconditions": [
+      "effect đã authorized nhưng chưa gửi; switch enabled",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "KILL_SWITCH_ACTIVE; transmit=0"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-094",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Retry đã chứng minh không gửi",
+    "preconditions": [
+      "connect failure before bytes sent; budget còn",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "schedule retry",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "attempt dùng cùng effect identity; backoff hợp lệ; vượt budget vào DEAD_LETTER"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-095",
+    "product": "masonwing",
+    "feature_id": "F-013",
+    "title": "Không gọi compensation là undo",
+    "preconditions": [
+      "bài đã publish và user yêu cầu revert",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit compensation",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "effect mới có approval riêng; original receipt giữ nguyên; UI không nói lịch sử đã bị xóa"
+    ],
+    "suite_id": "TS-EFFECTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-096",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Reserve trước provider",
+    "preconditions": [
+      "budget còn 100 units; request upper_bound=20",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "reservation 20 tồn tại trước provider call; balance khả dụng 80"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-097",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Race budget",
+    "preconditions": [
+      "balance=100; hai request cùng đòi 80",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "reserve đồng thời",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một reservation 80; một BUDGET_EXCEEDED; tổng reserved<=100"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-098",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Usage chưa biết",
+    "preconditions": [
+      "provider timeout sau acceptance",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "settle attempt",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "cost_state UNKNOWN; không giải phóng reservation như zero; reconcile queued"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-099",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Settlement idempotent",
+    "preconditions": [
+      "usage 12 cho reservation20",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi receipt usage hai lần",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "charged12; released8; lần replay không trừ thêm"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-100",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Không có upper bound",
+    "preconditions": [
+      "model profile không có output ceiling hoặc tool price cap",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "admit",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "PRICE_BOUND_UNKNOWN; billable calls=0"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-101",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "Tenant fairness",
+    "preconditions": [
+      "tenant A đầy slots; B còn share",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit A và B",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "A queued hoặc 429 theo backlog; B vẫn được dispatch"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-102",
+    "product": "masonwing",
+    "feature_id": "F-014",
+    "title": "BYOK vẫn kiểm quota",
+    "preconditions": [
+      "BYOK profile; platform daily limit hết",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "dispatch",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "QUOTA_EXCEEDED; customer provider calls=0"
+    ],
+    "suite_id": "TS-BUDGET"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-103",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Capability negotiation",
+    "preconditions": [
+      "task cần Responses compact; adapter chỉ Chat Completions",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "plan task",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CAPABILITY_UNSUPPORTED; không downgrade ngầm sang plain text"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-104",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Native envelope fidelity",
+    "preconditions": [
+      "fixture chứa message.phase, reasoning, tool call, compaction và unknown opaque item",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "persist rồi reload",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "canonical native payload giữ nguyên các fields/items; không leak native content vào public logs"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-105",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Standalone compact window",
+    "preconditions": [
+      "compact response có 3 ordered items gồm opaque compaction",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "continue conversation",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "next input chứa đủ 3 items đúng thứ tự; không chỉ dùng compact item"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-106",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Server compaction mode",
+    "preconditions": [
+      "profile chọn manual history với server compaction",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gửi hai lượt liên tiếp",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không trộn previous_response_id với duplicate manual history; native compaction output còn được giữ"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-107",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Không thay business truth",
+    "preconditions": [
+      "xóa provider session sau khi run đã có approval/evidence",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "đọc business records",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "approval/evidence/receipt vẫn tồn tại; không reconstruct từ model summary"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-108",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Đổi provider",
+    "preconditions": [
+      "opaque state provider A; chuyển B",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "continue",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "B không nhận opaque blob A; context có source refs hợp lệ và thông báo continuity boundary"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-109",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Structured output lỗi",
+    "preconditions": [
+      "tool arguments malformed hoặc output thiếu required field",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "consume output",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "MODEL_OUTPUT_INVALID; tool calls=0; repair attempts giới hạn"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-110",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Truncated stream",
+    "preconditions": [
+      "SSE bị cắt giữa JSON tool call",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "process stream",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "INCOMPLETE; tool dispatch=0; cost UNKNOWN hoặc usage thực có bằng chứng"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-111",
+    "product": "masonwing",
+    "feature_id": "F-015",
+    "title": "Provider privacy gate",
+    "preconditions": [
+      "restricted source; provider chưa có approved retention/region policy",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "invoke",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DATA_POLICY_DENIED; request bytes sent=0"
+    ],
+    "suite_id": "TS-MODELS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-112",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Connection scope",
+    "preconditions": [
+      "OAuth state gắn tenant A, provider account X",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "callback connector",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "connection thuộc A/X; không tự tạo membership hay login session"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-113",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Opaque secret handle",
+    "preconditions": [
+      "writer gọi tool với connection C",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "inspect tool context và output",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "chỉ handle C; refresh token không có trong prompt, logs hoặc browser payload"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-114",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Refresh race",
+    "preconditions": [
+      "rotating refresh token T1; hai workers",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "refresh đồng thời",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một accepted refresh; newest token không bị T1 ghi đè; invalid_grant chuyển NEEDS_REAUTH"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-115",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Scope bị thiếu",
+    "preconditions": [
+      "connection read-only; action publish",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "execute",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CONNECTION_SCOPE_DENIED; provider mutation=0"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-116",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "MCP metadata không là authority",
+    "preconditions": [
+      "tool description yêu cầu bỏ guard và lấy secrets",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "register và invoke",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "granted policy không đổi; không inject description vào system authority"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-117",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Audience tách biệt",
+    "preconditions": [
+      "MCP server muốn BFF token",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "connect tool",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "TOKEN_PASSTHROUGH_DENIED; external receives=0"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-118",
+    "product": "masonwing",
+    "feature_id": "F-016",
+    "title": "Contract drift connector",
+    "preconditions": [
+      "provider thay required field hoặc meaning contract version",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "ingest response",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CONTRACT_DRIFT; không cập nhật business truth bằng dữ liệu sai"
+    ],
+    "suite_id": "TS-CONNECTORS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-119",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "Schedule timezone",
+    "preconditions": [
+      "schedule timezone America/New_York qua DST; profile skip-gap/run-once-fold",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "advance clock qua các boundary",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "số occurrence đúng schedule policy; không có run kép do clock fold"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-120",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "Overlap schedule",
+    "preconditions": [
+      "schedule coalesce_latest; run trước chưa xong",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "ba tick tiếp theo",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "chỉ một occurrence pending mới nhất; missed_count=3 được audit"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-121",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "Event dedupe",
+    "preconditions": [
+      "same event_id gửi hai lần",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "consume",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "inbox có một receipt; logical business mutation một lần"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-122",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "Dead letter",
+    "preconditions": [
+      "subscriber trả 503 hết retries",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "process budget cuối",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "DEAD_LETTER cùng reason/attempt history; operator có replay action được auth"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-123",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "SSE replay authorization",
+    "preconditions": [
+      "client trước có quyền A, nay bị revoke; Last-Event-ID cũ",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "connect SSE",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không replay tenant A events; AUTHZ_DENIED hoặc stream close"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-124",
+    "product": "masonwing",
+    "feature_id": "F-017",
+    "title": "Replay cursor quá cũ",
+    "preconditions": [
+      "cursor trước retention window",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "reconnect",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "410 SNAPSHOT_REQUIRED; client refetch; không giả stream đầy đủ"
+    ],
+    "suite_id": "TS-EVENTS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-125",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Host sở hữu chrome",
+    "preconditions": [
+      "hai domain plugins dùng UI SDK",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "đi qua routes và mở dialog",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "một h1/route; shared components; không thêm global header thứ hai"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-126",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Contribution có namespace",
+    "preconditions": [
+      "hai plugin khai báo cùng route /settings",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "load contributions",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "UI_CONTRIBUTION_CONFLICT; không overwrite route im lặng"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-127",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Untrusted iframe",
+    "preconditions": [
+      "iframe origin khác; fixture cố đọc host DOM và gửi forged message",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "open contribution",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "browser chặn DOM; bridge từ chối origin/schema; privileged calls=0"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-128",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Permission change UI",
+    "preconditions": [
+      "Editor được downgrade Viewer khi đang mở editor",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "nhận permission refresh",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "Publish/Edit bị disable hoặc ẩn; cached data tenant khác không hiện"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-129",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "UI states",
+    "preconditions": [
+      "mỗi state fixture trong UI matrix",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "render route",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "title/recovery control đúng state; không hiển thị giả dữ liệu khi error"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-130",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Deep link phục hồi",
+    "preconditions": [
+      "chưa login; deep link resource A",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "login thành công",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "đến A sau auth; nếu không có quyền trả 404 thay vì landing giả"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-131",
+    "product": "masonwing",
+    "feature_id": "F-018",
+    "title": "Không mất draft im lặng",
+    "preconditions": [
+      "editor dirty; autosave failed",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "navigate away",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "stay/discard dialog; cancel giữ draft; không tự publish hoặc ghi đè server"
+    ],
+    "suite_id": "TS-UI"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-132",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Search có tenant filter",
+    "preconditions": [
+      "index chứa A/B cùng keyword",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "A search",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "B không có trong hits, facets, snippets hay counts"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-133",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Pagination ổn định",
+    "preconditions": [
+      "nhiều records cùng timestamp; cursor page1",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request page2",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "không lặp/bỏ record trong snapshot; cursor đổi filters trả CURSOR_MISMATCH"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-134",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Export snapshot",
+    "preconditions": [
+      "auditor export 100 records",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "start rồi cập nhật source",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "export thể hiện snapshot đã pin; manifest có schema/digest và data classification"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-135",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Chống CSV formula injection",
+    "preconditions": [
+      "cell bắt đầu =,+,-,@,tab,CR",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "export CSV",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "mở fixture không thực thi formula; raw value có trong safe JSON export được auth"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-136",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Notification không lộ nội dung",
+    "preconditions": [
+      "event có secret canary và restricted draft",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "send notification",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "chỉ summary được phép và deep link; canary=0 trong payload"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-137",
+    "product": "masonwing",
+    "feature_id": "F-019",
+    "title": "Read status không làm side effect nghiệp vụ",
+    "preconditions": [
+      "notification liên kết approval pending",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "mark read",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "approval vẫn PENDING; publish calls=0"
+    ],
+    "suite_id": "TS-SEARCH-EXPORT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-138",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Trace propagation",
+    "preconditions": [
+      "run R có trace T",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "invoke remote step",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "trace chứa parent relation R/T và plugin digest; không dùng tenant text làm metric label"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-139",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Audit bất biến",
+    "preconditions": [
+      "runtime token; event E tồn tại",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "update/delete E",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "AUDIT_IMMUTABLE; original digest không đổi"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-140",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Secret redaction",
+    "preconditions": [
+      "canary ở token, error body, header, tool args",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "inject fault qua các sinks",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "canary không xuất hiện trong logs, traces, metrics, exports, screenshots"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-141",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Support có thời hạn",
+    "preconditions": [
+      "tenant owner cấp 15 phút chỉ đọc metadata",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "support đọc content ngoài scope",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "SUPPORT_SCOPE_DENIED; metadata hợp lệ có audit; expiry chặn toàn access"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-142",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Không thành công giả khi thiếu audit",
+    "preconditions": [
+      "audit datastore lỗi write",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "publish request",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "AUDIT_UNAVAILABLE; transmit=0; không success toast"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-143",
+    "product": "masonwing",
+    "feature_id": "F-020",
+    "title": "Alert có hành động",
+    "preconditions": [
+      "DLQ vượt L-ALERT threshold",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "evaluate alert",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "alert có correlation, owner Ops, runbook ref và side-effect state"
+    ],
+    "suite_id": "TS-AUDIT"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-144",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Build provenance",
+    "preconditions": [
+      "CI build candidate",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "publish candidate to staging registry",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "SBOM và provenance tham chiếu cùng digest; không dùng mutable latest trong deployment manifest"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-145",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Tách môi trường",
+    "preconditions": [
+      "staging service token và secret path",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request production data",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ENVIRONMENT_DENIED; data returned=0"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-146",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Migration preflight",
+    "preconditions": [
+      "destructive migration thiếu backup receipt",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "migrate",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "MIGRATION_PREFLIGHT_FAILED; schema không đổi"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-147",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Restore kiểm toàn vẹn",
+    "preconditions": [
+      "backup Postgres/object store/history khác watermark",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "restore",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "write readiness=false đến khi repair/reconcile hoàn tất; dangling refs được report"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-148",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Health đúng dependency",
+    "preconditions": [
+      "policy hoặc secret broker unavailable",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "GET /health/ready",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "non-200 write readiness; cached public static page vẫn có thể phục vụ"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-149",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "License policy",
+    "preconditions": [
+      "SBOM có license bị cấm hoặc unknown",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "release gate",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "LICENSE_REVIEW_REQUIRED; không promote; không tự khẳng định OSS"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-150",
+    "product": "masonwing",
+    "feature_id": "F-021",
+    "title": "Restore không retry effect đã gửi",
+    "preconditions": [
+      "backup có PREPARED nhưng provider đã xử lý sau backup",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "resume restore",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "OUTCOME_UNKNOWN/RECONCILING; không resend từ trạng thái cũ"
+    ],
+    "suite_id": "TS-OPERATIONS"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-151",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Catalog metadata",
+    "preconditions": [
+      "publisher đã verify; artifact digest D",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "submit listing",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "listing PENDING_REVIEW chứa D, capabilities, license, compatibility và support contact"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-152",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Duyệt trước public",
+    "preconditions": [
+      "listing chưa đủ reviews",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "request public install",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "LISTING_NOT_APPROVED; artifact không được activated"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-153",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Permission diff khi update",
+    "preconditions": [
+      "v1 read; v2 thêm publish",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "update theo auto-update policy",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "UPDATE_APPROVAL_REQUIRED; v1 còn hoạt động; publish không tự được cấp"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-154",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Thu hồi phiên bản marketplace",
+    "preconditions": [
+      "digest D đang listed và revoked",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "install D từ cache hoặc catalog",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "ARTIFACT_REVOKED; không bypass bằng offline cache"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-155",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Entitlement không là authorization",
+    "preconditions": [
+      "tenant có license plugin nhưng user không có publish role",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "publish",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "AUTHZ_DENIED; paid entitlement không cấp quyền nghiệp vụ"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-156",
+    "product": "masonwing",
+    "feature_id": "F-022",
+    "title": "Không tự thu tiền",
+    "preconditions": [
+      "catalog mở; commerce capability disabled",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "gọi checkout endpoint",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "COMMERCE_DISABLED; charge/payout=0; free install vẫn theo policy"
+    ],
+    "suite_id": "TS-MARKETPLACE"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-157",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Scaffold plugin",
+    "preconditions": [
+      "clean workspace; plugin namespace com.example.review",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "CLI init",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "generated project validate thành công; không chứa marketing import"
+    ],
+    "suite_id": "TS-SDK"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-158",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Contract compatibility",
+    "preconditions": [
+      "host major1; plugin requires major2",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "load",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "CONTRACT_INCOMPATIBLE có supported range; handler calls=0"
+    ],
+    "suite_id": "TS-SDK"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-159",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Pack deterministic",
+    "preconditions": [
+      "hai clean builds cùng lock/source/config",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "pack hai lần",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "unsigned content digests giống nhau; timestamp/signature envelope không lẫn payload reproducibility"
+    ],
+    "suite_id": "TS-SDK"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-160",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Conformance report có identity",
+    "preconditions": [
+      "artifact D, suite version S",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "run conformance",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "report D/S/env; NOT_RUN/skipped không được tính PASS"
+    ],
+    "suite_id": "TS-SDK"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-161",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Dev profile không production",
+    "preconditions": [
+      "auth mock hoặc unsigned plugin=true; env production",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "start",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "UNSAFE_CONFIGURATION; readiness=false"
+    ],
+    "suite_id": "TS-SDK"
+  },
+  {
+    "qualified_id": "MASONWING@1.0.1:TC-AC-162",
+    "product": "masonwing",
+    "feature_id": "F-023",
+    "title": "Adapter thay thế không fork",
+    "preconditions": [
+      "fake IdP và storage adapter dùng cùng contracts",
+      "Dữ liệu fixture synthetic; isolation reset trước case"
+    ],
+    "steps": [
+      "Seed fixture theo Given và setup recipe của feature",
+      "run portability suite",
+      "Quan sát public response,resource version,audit và provider stub counters"
+    ],
+    "expected": [
+      "domain plugin digests không đổi; identity/data assertions giống nhau"
+    ],
+    "suite_id": "TS-SDK"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "bundle": "masonwing-shared",
+  "version": "1.0.0",
+  "sha256": "38e73596754b269b4e9afb01e4a9040794a9e7c5e3971799a133676a3aaef0c0",
+  "consumer": "MASONWING",
+  "compatibility": "major1; current and previous minor after conformance",
+  "status": "SPEC_BASELINE_NOT_RUNTIME_QUALIFICATION"
+}
