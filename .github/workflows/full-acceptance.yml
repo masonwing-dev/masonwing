@@ -1,0 +1,157 @@
+name: Full Acceptance Verification
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-full:
+    name: Full Acceptance Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: masonwing_migrator
+          POSTGRES_PASSWORD: masonwing_migrator
+          POSTGRES_DB: masonwing
+        ports: [5432:5432]
+        options: >-
+          --health-cmd "pg_isready -U masonwing_migrator"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      minio:
+        image: minio/minio:latest
+        env:
+          MINIO_ROOT_USER: minioadmin
+          MINIO_ROOT_PASSWORD: minioadmin
+        ports: [9000:9000, 9001:9001]
+        options: >-
+          --health-cmd "curl -f http://localhost:9000/minio/health/live"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      keycloak:
+        image: quay.io/keycloak/keycloak:24.0
+        env:
+          KC_BOOTSTRAP_ADMIN_USER: admin
+          KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+        ports: [8080:8080]
+        options: >-
+          --health-cmd "curl -f http://localhost:8080/health/ready"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+      temporal:
+        image: temporalio/temporal:1.24
+        env:
+          DB: sqlite
+          DB_FILE: /var/lib/temporal/temporal.db
+        ports: [7233:7233, 8233:8233]
+        options: >-
+          --health-cmd "tctl cluster health"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.84.0
+          components: rustfmt, clippy
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Setup Node.js & pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements-dev.txt
+
+      - name: Install Node dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Spec & Schema Drift Checks
+        run: |
+          python3 scripts/sync_specs.py --check
+          node scripts/generate-types.mjs --check
+
+      - name: Check Rust Formatting
+        run: cargo fmt --all -- --check
+
+      - name: Rust Cargo Check
+        run: cargo check --locked --workspace --jobs 2
+
+      - name: Rust Clippy
+        run: cargo clippy --locked --workspace --all-targets --jobs 2 -- -D warnings
+
+      - name: Rust Unit & Domain Tests
+        run: cargo test --locked --workspace --jobs 2
+
+      - name: Scaffold Tests
+        run: .venv/bin/python -m pytest tests/scaffold -q
+
+      - name: Web Typecheck
+        run: pnpm typecheck
+
+      - name: Web Unit Tests
+        run: pnpm test
+
+      - name: Web Build
+        run: pnpm build
+
+      - name: Start Compose Stack
+        run: |
+          python3 scripts/dev.py up
+
+      - name: Wait for services
+        run: |
+          sleep 30
+          curl -f http://localhost:39850/health/live
+          curl -f http://localhost:39851/health/ready
+
+      - name: Run Integration Tests
+        run: .venv/bin/python -m pytest tests/integration -q
+
+      - name: Run Acceptance Tests
+        run: .venv/bin/python -m pytest tests/acceptance/test_requirements.py -q --tb=short
+
+      - name: Run E2E Browser Tests
+        run: pnpm test:e2e
+
+      - name: Cleanup Compose Stack
+        if: always()
+        run: python3 scripts/dev.py down
