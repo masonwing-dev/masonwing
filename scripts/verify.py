@@ -30,9 +30,10 @@ def main() -> int:
         ("web-types", ["pnpm", "typecheck"]),
         ("web-tests", ["pnpm", "test"]),
         ("web-build", ["pnpm", "build"]),
+        ("integration-tests", [".venv/bin/python", "-m", "pytest", "tests/integration", "-q", "--junitxml=.dev/evidence/integration.xml"]),
     ]
-    if args.integration:
-        checks.append(("integration-tests", [".venv/bin/python", "-m", "pytest", "tests/integration", "-q", "--junitxml=.dev/evidence/integration.xml"]))
+    if args.browser:
+        checks.append(("browser-tests", ["pnpm", "test:e2e"]))
     if args.browser:
         checks.append(("browser-tests", ["pnpm", "test:e2e"]))
     report = {"kind": "SCAFFOLD_VERIFICATION", "product_acceptance": "NOT_ACCEPTED",
