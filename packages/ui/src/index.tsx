@@ -35,7 +35,7 @@ export function NavigationSheet({ open, onOpenChange, onCloseAutoFocus, children
           <Dialog.Title>Điều hướng</Dialog.Title>
           <Dialog.Close asChild><Button aria-label="Đóng điều hướng">Đóng</Button></Dialog.Close>
         </div>
-        <Dialog.Description className="sr-only">Các mô-đun trong khung phát triển Masonwing và Gleanbird.</Dialog.Description>
+        <Dialog.Description className="sr-only">Các mô-đun trong workspace Masonwing.</Dialog.Description>
         {children}
       </Dialog.Content>
     </Dialog.Portal>

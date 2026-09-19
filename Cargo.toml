@@ -2,6 +2,7 @@
 resolver = "3"
 members = [
     "crates/contracts",
+    "crates/contract-validation",
     "crates/kernel",
     "crates/sdk",
     "crates/host-api",
@@ -35,11 +36,21 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"
 thiserror = "2"
-tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "signal"] }
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "signal", "time", "sync", "fs", "io-util"] }
 tower = { version = "0.5", features = ["util"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4", "v5", "serde"] }
+sqlx = { version = "0.8.6", default-features = false, features = ["runtime-tokio", "tls-rustls", "postgres", "uuid", "chrono", "json", "migrate", "macros"] }
+jsonschema = { version = "0.56", default-features = false }
+serde_json_canonicalizer = "0.3.2"
+semver = { version = "1", features = ["serde"] }
+async-trait = "0.1"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
 
 masonwing-contracts = { path = "crates/contracts" }
+masonwing-contract-validation = { path = "crates/contract-validation" }
 masonwing-kernel = { path = "crates/kernel" }
 masonwing-sdk = { path = "crates/sdk" }
 masonwing-host-api = { path = "crates/host-api" }
-
+masonwing-data-postgres = { path = "platform-plugins/data-postgres" }
+masonwing-workflow-temporal = { path = "platform-plugins/workflow-temporal" }

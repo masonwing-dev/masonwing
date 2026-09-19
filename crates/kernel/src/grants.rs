@@ -168,4 +168,112 @@ mod tests {
             Err(GrantError::DelegationDenied)
         );
     }
+
+    fn child_request(
+        tenant: &str,
+        actions: &[&str],
+        resources: &[&str],
+        expires_at: i64,
+    ) -> ChildGrantRequest {
+        ChildGrantRequest {
+            id: GrantId::new("grant_child").unwrap(),
+            tenant_id: TenantId::new(tenant).unwrap(),
+            principal_id: PrincipalId::new("principal_child").unwrap(),
+            actions: actions.iter().map(|value| action(value)).collect(),
+            resources: resources.iter().map(|value| resource(value)).collect(),
+            expires_at: EpochMillis(expires_at),
+        }
+    }
+
+    // MASONWING@1.0.1 REQ-054 / AC-056.
+    #[test]
+    fn child_grant_never_crosses_tenant_boundary() {
+        let request = child_request("tenant_b", &["article.read"], &["article_a"], 900);
+        assert_eq!(
+            parent().derive_child(request),
+            Err(GrantError::DelegationDenied)
+        );
+    }
+
+    // MASONWING@1.0.1 REQ-054 / AC-056.
+    #[test]
+    fn child_grant_cannot_outlive_parent_expiry_instant() {
+        let request = child_request("tenant_a", &["article.read"], &["article_a"], 1_001);
+        assert_eq!(
+            parent().derive_child(request),
+            Err(GrantError::DelegationDenied)
+        );
+    }
+
+    // MASONWING@1.0.1 REQ-054 / AC-056.
+    #[test]
+    fn child_grant_cannot_expand_parent_action_set() {
+        let request = child_request("tenant_a", &["article.publish"], &["article_a"], 900);
+        assert_eq!(
+            parent().derive_child(request),
+            Err(GrantError::DelegationDenied)
+        );
+    }
+
+    // MASONWING@1.0.1 REQ-054 / AC-056.
+    #[test]
+    fn narrower_child_grant_keeps_parent_identity_and_scope() {
+        let child = parent()
+            .derive_child(child_request(
+                "tenant_a",
+                &["article.read"],
+                &["article_a"],
+                900,
+            ))
+            .expect("subset request is a legal delegation");
+
+        assert_eq!(
+            child.parent_id(),
+            Some(&GrantId::new("grant_parent").unwrap())
+        );
+        assert_eq!(
+            child.actions(),
+            &[action("article.read")].into_iter().collect()
+        );
+        assert_eq!(
+            child.resources(),
+            &[resource("article_a")].into_iter().collect()
+        );
+        assert_eq!(
+            child.authorize(
+                &action("article.read"),
+                &resource("article_a"),
+                EpochMillis(5)
+            ),
+            Ok(())
+        );
+    }
+
+    // MASONWING@1.0.1 REQ-050 / AC-052.
+    #[test]
+    fn root_grant_has_no_parent_and_authorizes_its_own_scope() {
+        let root = parent();
+        assert_eq!(root.parent_id(), None);
+        assert_eq!(
+            root.authorize(
+                &action("article.read"),
+                &resource("article_a"),
+                EpochMillis(999)
+            ),
+            Ok(())
+        );
+    }
+
+    // MASONWING@1.0.1 REQ-050 / AC-052.
+    #[test]
+    fn unrelated_resource_is_denied_even_with_a_granted_action() {
+        assert_eq!(
+            parent().authorize(
+                &action("article.read"),
+                &resource("article_b"),
+                EpochMillis(5)
+            ),
+            Err(GrantError::DelegationDenied)
+        );
+    }
 }

@@ -40,10 +40,12 @@ general forward proxy. This preserves the local port contract on the inspected
 OrbStack engine, where ports on an internal-only container were not published.
 The gateway's private health port 8404 is not published on the host.
 
-The worker, component runner and remote runner run on private container ports.
-They currently serve status and handle shutdown; they do not yet execute
-Temporal tasks, Wasm components, browser jobs or media renders. Container
-liveness is not evidence that these adapters have been implemented.
+The worker, component runner and remote runner services run on private container
+ports. Their service transports currently expose health/shutdown behavior. The
+Wasmtime library now executes components through the host's synchronous
+`plugin.invoke` adapter, but the separate runner service has no execution transport
+yet. Temporal task consumption and remote/browser/media execution remain pending.
+Container liveness is not evidence of those capabilities.
 
 ## Local accounts and data
 
@@ -51,8 +53,10 @@ Keycloak administrator: `admin` / `masonwing-local-admin` by default. The realm
 contains `developer` / `masonwing-local-developer`. The confidential client
 `masonwing-local-bff` requires authorization code + S256 PKCE and permits only
 `http://localhost:39850/auth/callback`. Password grants and implicit flow are off.
-The Rust BFF login/session adapter remains unimplemented; these identity fixtures
-do not constitute a working application login or grant application ownership.
+The Rust BFF now contains OIDC login/session, CSRF and current Cedar/membership
+gates; see `auth-implementation.md` for implementation and qualification boundaries.
+Identity-provider accounts do not automatically grant tenant ownership. Rebuild
+the runtime image to serve the current source.
 
 Database runtime role: `masonwing_app` / `masonwing-local-app`; migration owner:
 `masonwing_migrator` / `masonwing-local-migrator`. The runtime role is not a table
@@ -63,8 +67,10 @@ not authenticated tenant/brand selections.
 
 Storage credentials default to `masonwing-local` / `masonwing-local-storage`.
 OpenBao dev root token defaults to `masonwing-local-root`; fixture reader policies
-allow only their tenant's path. Root storage/Bao credentials are not passed to
-the application runtime. Production credentials must never reuse these values.
+allow only their tenant's path. The local S3 adapter uses synthetic MinIO
+credentials. OpenBao root credentials are not application capability grants.
+Production credentials must never reuse these values; production service
+identities require qualification.
 
 PostgreSQL, S3, the synthetic provider's SQLite state and Temporal's local SQLite
 state persist in named project volumes. **OpenBao runs in dev mode and its state
@@ -107,12 +113,13 @@ automatic volume reset command. Existing other projects/services are not stopped
 
 ## Health semantics
 
-`/health/live` is 200 while the Rust process is alive. `/health/ready` is
-deliberately **503**, with `writes=false` and
-`critical_adapters_qualified=false`, until real adapters and their required
-evidence are implemented. `/dev/status` explicitly reports `NOT_IMPLEMENTED`,
-no external mutations and a zero live budget. No command returns a fabricated
-successful business receipt. Fake bearer values are not authenticated users.
+`/health/live` is 200 while the Rust process is alive. The current API returns
+**503 / QUALIFICATION_INCOMPLETE** from `/health/ready`, with external provider
+mutations disabled and a zero live budget. Current `/dev/status` identifies the
+PostgreSQL/S3/OIDC/Cedar runtime and the complete operation catalog. Implemented
+local commands can produce real committed receipts; unavailable handlers fail
+explicitly. Fake bearer values are not authenticated users. Older scaffold images
+retain their older status fields until rebuilt.
 
 These distinctions are shown in the web shell and asserted in the HTTP tests.
 The local services can all be healthy while product write readiness is false.

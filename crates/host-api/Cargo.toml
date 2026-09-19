@@ -11,8 +11,33 @@ masonwing-contracts.workspace = true
 serde.workspace = true
 tokio.workspace = true
 thiserror.workspace = true
+chrono.workspace = true
+sqlx.workspace = true
+uuid.workspace = true
+serde_json.workspace = true
+masonwing-kernel.workspace = true
+masonwing-sdk.workspace = true
+masonwing-component-runner = { path = "../component-runner" }
+masonwing-contract-validation.workspace = true
+masonwing-data-postgres.workspace = true
+masonwing-identity-oidc = { path = "../../platform-plugins/identity-oidc" }
+masonwing-authorization-cedar = { path = "../../platform-plugins/authorization-cedar" }
+tower-sessions = "0.14.0"
+tower-sessions-sqlx-store = { version = "0.15.0", features = ["postgres"] }
+time = { version = "0.3", features = ["serde"] }
+masonwing-artifacts-adapter = { path = "../../platform-plugins/artifacts" }
+tokio-util = { version = "0.7", features = ["io"] }
+futures-util = "0.3"
+bytes = "1"
+async-stream = "0.3"
+base64 = "0.22"
+reqwest.workspace = true
+async-trait.workspace = true
+checksum-fixture = { path = "../../products/checksum" }
+document-review-fixture = { path = "../../products/document-review" }
 
 [dev-dependencies]
 serde_json.workspace = true
 tower.workspace = true
-
+ed25519-dalek = "2"
+masonwing-worker = { path = "../worker", features = ["local-temporal-tests"] }

@@ -114,4 +114,56 @@ mod tests {
         assert_eq!(migration_calls.get(), 0);
         assert!(registry.installed().is_empty());
     }
+
+    // MASONWING@1.0.1 REQ-007 / AC-007.
+    #[test]
+    fn successful_dependency_resolution_installs_in_topological_order() {
+        let plugin_a = PluginId::new("plugin_a").unwrap();
+        let plugin_b = PluginId::new("plugin_b").unwrap();
+        let plugin_c = PluginId::new("plugin_c").unwrap();
+
+        let mut graph = DependencyGraph::default();
+        // A depends on B and C, B depends on C (diamond)
+        graph.insert(plugin_a.clone(), vec![plugin_b.clone(), plugin_c.clone()]);
+        graph.insert(plugin_b.clone(), vec![plugin_c.clone()]);
+        graph.insert(plugin_c.clone(), vec![]);
+
+        let migrated = std::cell::RefCell::new(Vec::new());
+        let mut registry = InstallRegistry::default();
+        let plan = registry
+            .install_with_migration(&graph, &plugin_a, |p| {
+                migrated.borrow_mut().push(p.clone());
+            })
+            .expect("acyclic graph resolves");
+
+        assert_eq!(
+            plan,
+            vec![plugin_c.clone(), plugin_b.clone(), plugin_a.clone()]
+        );
+        assert_eq!(*migrated.borrow(), plan);
+        assert!(registry.installed().contains(&plugin_a));
+        assert!(registry.installed().contains(&plugin_b));
+        assert!(registry.installed().contains(&plugin_c));
+    }
+
+    // MASONWING@1.0.1 REQ-007 / AC-007.
+    #[test]
+    fn missing_dependency_fails_with_unsatisfied_error() {
+        let plugin_a = PluginId::new("plugin_a").unwrap();
+        let plugin_missing = PluginId::new("plugin_missing").unwrap();
+
+        let mut graph = DependencyGraph::default();
+        graph.insert(plugin_a.clone(), vec![plugin_missing.clone()]);
+
+        let mut registry = InstallRegistry::default();
+        let result = registry.install_with_migration(&graph, &plugin_a, |_| {});
+
+        assert_eq!(
+            result,
+            Err(RegistryError::DependencyUnsatisfied {
+                plugin: plugin_missing
+            })
+        );
+        assert!(registry.installed().is_empty());
+    }
 }

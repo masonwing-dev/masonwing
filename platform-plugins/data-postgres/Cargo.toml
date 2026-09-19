@@ -8,4 +8,27 @@ publish.workspace = true
 [dependencies]
 masonwing-contracts.workspace = true
 masonwing-kernel.workspace = true
+masonwing-contract-validation.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sqlx.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+tokio.workspace = true
+async-trait.workspace = true
+sha2.workspace = true
+semver.workspace = true
+ed25519-dalek = "2"
+hmac = "0.12"
+base64 = "0.22"
+tempfile = "3"
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg"] }
+masonwing-authorization-cedar = { path = "../authorization-cedar" }
 
+[features]
+local-postgres-tests = []
+
+[[test]]
+name = "registry_postgres"
+path = "tests/registry_postgres.rs"
+required-features = ["local-postgres-tests"]

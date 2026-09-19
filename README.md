@@ -5,11 +5,21 @@
 
 **Masonwing** is an open-source, domain-neutral agent runtime and plugin host written in Rust with a React developer shell and pluggable infrastructure adapters.
 
-Masonwing provides the strict architectural guarantees required to build and run autonomous agent plugins safely: fail-closed authorization, multi-tenant isolation, immutable human-in-the-loop approvals, bounded agent loops, and resilient side-effect reconciliation.
+Masonwing is being implemented against immutable requirements for fail-closed authorization, multi-tenant isolation, immutable approvals, bounded execution and explicit reconciliation of uncertain external outcomes. The complete product is not yet qualified for production.
+
+## Current implementation
+
+The application includes OIDC/session and Cedar boundaries, tenant-scoped PostgreSQL command transactions, an S3 artifact lifecycle, plugin registry/composition/lifecycle commands and synchronous `plugin.invoke`. Native dispatch uses a compiled package allowlist; Wasmtime components have no WASI access. Payloads are checked against signed schema artifacts, with current grants, source rights, immutable receipts and audit/outbox persistence.
+
+Both checksum and document-review fixtures have executed through the same host runtime and real local PostgreSQL/MinIO storage. Their results retain input classification, and replay returns the original receipt. See [registry and invocation](docs/registry-invocation-implementation.md), [auth](docs/auth-implementation.md), [artifacts](docs/artifact-implementation.md) and [web shell](docs/web-implementation.md) for scope and evidence.
+
+The [16 September runtime verification report](docs/runtime-verification-20260916.md) records exact test results, real browser/Keycloak/upload evidence, source fingerprints and remaining delivery work.
+
+Durable Temporal orchestration, complete approval/effect/budget settlement and provider dispatch, remote execution, full Gleanbird workflows, automatic plugin migrations and production acceptance still require implementation and qualification. Readiness remains 503; external provider mutations and live budget remain disabled. Local successful commands are not release acceptance.
 
 ---
 
-## Key Invariants & Architectural Principles
+## Required Invariants & Architectural Principles
 
 1. **Domain-Neutral Core**: The kernel contains zero business or vertical-specific logic. Vertical agent products consume the public SDK (`masonwing-sdk`) without modifying the host platform.
 2. **Fail-Closed Tenancy & Permissions**: Tenant boundaries and fine-grained authorization are enforced before parsing untrusted payload bodies. Child grants cannot exceed parent capabilities, and tokens expire at exact boundaries.
@@ -28,9 +38,9 @@ crates/
 ├── kernel/                # Host-side invariants, state machines, guards, and ports
 ├── sdk/                   # Public domain-plugin SDK (host broker, state transitions)
 ├── host-api/              # Axum HTTP service with fail-closed command routing
-├── worker/                # Background worker runtime with graceful shutdown
-├── component-runner/      # Isolated component execution runner process
-├── remote-runner/         # Remote worker execution process
+├── worker/                # Worker boundary; Temporal task consumption pending
+├── component-runner/      # Wasmtime library + health service; transport pending
+├── remote-runner/         # Remote execution boundary, currently unavailable
 └── cli/                   # Developer CLI (masonwing status, version)
 
 platform-plugins/          # 10 pluggable infrastructure adapter boundaries
@@ -69,7 +79,7 @@ docs/                      # Architecture, DDD boundaries, and TDD documentation
 ### Prerequisites
 
 - **Rust**: `1.97.1` (configured via `rust-toolchain.toml`)
-- **Node.js**: `>= 20` and `pnpm >= 9`
+- **Node.js**: `>= 22.12.0` and **pnpm** `11.24.0` (see `package.json`)
 - **Python**: `>= 3.11`
 - **Docker** & **Docker Compose**
 
@@ -111,6 +121,9 @@ make test-integration
 # Run browser end-to-end tests
 pnpm exec playwright install chromium
 make test-e2e
+
+# Application checks with actual local PostgreSQL and native fixture execution
+python3 scripts/verify_runtime.py contracts rust postgres native scaffold auth web
 ```
 
 ---
@@ -136,7 +149,7 @@ Unimplemented business handlers deliberately remain `NOT_IMPLEMENTED` (RED) unti
 
 - `GET /health/live`: Returns `200 OK` when the process is actively serving.
 - `GET /health/ready`: Returns `503 Service Unavailable` until all critical write adapters are qualified against production requirements.
-- `GET /dev/status`: Truthfully exposes local scaffold status, with external mutations disabled and live budget set to zero.
+- `GET /dev/status`: Reports local runtime configuration and incomplete qualification, with external provider mutations disabled and live budget set to zero.
 
 ---
 

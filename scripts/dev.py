@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import secrets
 import socket
 import subprocess
 from pathlib import Path
@@ -22,6 +23,19 @@ def bootstrap_env():
     path = ROOT / ".env"
     if not path.exists():
         shutil.copyfile(ROOT / ".env.example", path)
+        path.chmod(0o600)
+    content = path.read_text(encoding="utf-8")
+    # Local capability keys persist across restarts and never enter the tracked
+    # example file or terminal output. Preserve all existing configured values.
+    existing = {line.split("=", 1)[0].strip(): line.split("=", 1)[1].strip()
+                for line in content.splitlines() if "=" in line and not line.lstrip().startswith("#")}
+    additions = []
+    for name in ("MASONWING_INVITE_KEY", "MASONWING_LOCAL_BOOTSTRAP_KEY"):
+        if name not in existing:
+            additions.append(f"{name}={secrets.token_urlsafe(48)}")
+    if additions:
+        with path.open("a", encoding="utf-8") as destination:
+            destination.write(("" if content.endswith("\n") else "\n") + "\n".join(additions) + "\n")
         path.chmod(0o600)
     (ROOT / ".dev/evidence").mkdir(parents=True, exist_ok=True)
 

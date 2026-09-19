@@ -4,6 +4,8 @@
 !.env.example
 .venv
 .dev
+.evidence
+.worker-*
 target
 **/node_modules
 **/dist

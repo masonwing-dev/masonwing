@@ -9,6 +9,8 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
+pub mod wire;
+
 pub const CONTRACT_VERSION: &str = "1.0.0";
 
 fn validate_opaque_identifier(kind: &'static str, value: &str) -> Result<(), ValueError> {

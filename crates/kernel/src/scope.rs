@@ -56,4 +56,15 @@ mod tests {
             Err(TenantScopeError::TenantContextMismatch)
         );
     }
+
+    #[test]
+    fn matching_tenant_is_accepted_and_preserves_identifiers() {
+        let tenant = TenantId::new("tenant_a").unwrap();
+        let resource_id = ResourceId::new("resource_a").unwrap();
+        let resource = ScopedResource::new(tenant.clone(), resource_id.clone());
+
+        assert_eq!(require_tenant_scope(&tenant, &resource), Ok(()));
+        assert_eq!(resource.tenant_id(), &tenant);
+        assert_eq!(resource.resource_id(), &resource_id);
+    }
 }

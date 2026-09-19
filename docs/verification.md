@@ -1,5 +1,10 @@
 # Kiểm chứng scaffold local — 16/09/2026
 
+> Bản ghi bên dưới là snapshot scaffold trước khi nối runtime ứng dụng. Nó được
+> giữ nguyên để bảo toàn lịch sử, không phải trạng thái source mới nhất. Phần
+> registry, plugin invocation, Wasmtime và fixture PostgreSQL/MinIO mới được mô tả
+> trong `registry-invocation-implementation.md`; bằng chứng mới nằm dưới `.evidence/`.
+
 Đây là bằng chứng của **scaffold và các cơ chế đã triển khai**, không phải nghiệm
 thu toàn bộ sản phẩm. Nguồn máy chạy: macOS arm64, Rust/Cargo 1.97.1, Node 26.8.1,
 pnpm 11.24.0, Python 3.14.5, Docker 29.4.0 / Compose 5.1.2 trên OrbStack.

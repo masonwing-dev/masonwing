@@ -36,4 +36,6 @@ test-results/
 
 # Local developer evidence & system
 .dev/
+.evidence/
+.worker-1/
 .DS_Store

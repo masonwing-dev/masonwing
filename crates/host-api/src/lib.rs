@@ -6,6 +6,12 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
+pub mod auth;
+pub mod fixture_import;
+pub mod plugin_execution;
+pub mod plugin_runtime;
+pub mod runtime;
+
 use axum::{
     Json, Router,
     extract::State,
@@ -112,8 +118,13 @@ pub fn router(service: impl Into<String>, environment: Environment) -> Router {
 
 pub async fn run_service(service: &'static str) -> Result<(), StartupError> {
     let config = RuntimeConfig::from_env(service)?;
+    let app = if service == "masonwing-host-api" {
+        runtime::from_env(config.environment).await?
+    } else {
+        router(config.service.clone(), config.environment)
+    };
     let listener = TcpListener::bind(config.bind_addr).await?;
-    axum::serve(listener, router(config.service, config.environment))
+    axum::serve(listener, app)
         .with_graceful_shutdown(shutdown_signal())
         .await?;
     Ok(())
@@ -302,6 +313,8 @@ pub struct ErrorResponse {
 pub enum StartupError {
     #[error("UNSAFE_CONFIGURATION: {0}")]
     UnsafeConfiguration(&'static str),
+    #[error("RUNTIME_DEPENDENCY_UNAVAILABLE: {0}")]
+    Dependency(&'static str),
     #[error(transparent)]
     Value(#[from] ValueError),
     #[error(transparent)]

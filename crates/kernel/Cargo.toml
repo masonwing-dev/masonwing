@@ -8,8 +8,13 @@ publish.workspace = true
 [dependencies]
 masonwing-contracts.workspace = true
 thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+semver.workspace = true
+async-trait.workspace = true
+tokio.workspace = true
 
 [dev-dependencies]
 serde.workspace = true
 serde_json.workspace = true
-

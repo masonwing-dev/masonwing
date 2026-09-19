@@ -98,7 +98,9 @@ services:
       KC_DB_USERNAME: masonwing_keycloak
       KC_DB_PASSWORD: masonwing-local-keycloak
       KC_HOSTNAME: http://localhost:39853
-      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+      # Publish one logical issuer origin. The BFF's explicit local transport
+      # override routes server-side requests to keycloak:8080 after validation.
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "false"
       KC_HTTP_ENABLED: "true"
       KC_HEALTH_ENABLED: "true"
       KC_METRICS_ENABLED: "true"
@@ -179,9 +181,43 @@ services:
     mem_limit: 96m
     cpus: 0.5
 
+  scanner:
+    image: clamav/clamav-debian@sha256:cc16781fe005e49de6a8fc1231b63b265f74b18fc2a6347c670c35716914c3b6
+    user: clamav
+    entrypoint: ["clamd"]
+    command: ["--foreground=true", "--config-file=/etc/clamav/clamd.conf"]
+    restart: unless-stopped
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: ["/tmp:rw,nosuid,noexec,nodev,size=1200m,mode=1777"]
+    pids_limit: 64
+    mem_limit: 4g
+    cpus: 1.0
+    volumes:
+      - ./infra/clamav/clamd.conf:/etc/clamav/clamd.conf:ro
+    healthcheck:
+      test: ["CMD", "clamdscan", "--config-file=/etc/clamav/clamd.conf", "--ping=1"]
+      start_period: 60s
+      interval: 10s
+      timeout: 3s
+      retries: 12
+
   api:
     <<: *runtime
     command: [masonwing-host-api]
+    environment:
+      <<: *runtime-env
+      MASONWING_PUBLIC_ORIGIN: http://localhost:39850
+      OIDC_CLIENT_SECRET: masonwing-synthetic-bff-client-secret
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-masonwing-local}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-masonwing-local-storage-password}
+      MASONWING_INVITE_KEY: ${MASONWING_INVITE_KEY:?run scripts/dev.py preflight}
+      MASONWING_SCANNER_ADDRESS: scanner:3310
+      MASONWING_SPOOL_DIRECTORY: /var/lib/masonwing/spool
+    volumes:
+      - artifact-spool:/var/lib/masonwing/spool
     depends_on:
       postgres: {condition: service_healthy}
       keycloak: {condition: service_healthy}
@@ -193,6 +229,9 @@ services:
   worker:
     <<: *runtime
     command: [masonwing-worker]
+    environment:
+      <<: *runtime-env
+      MASONWING_WORKER_TENANTS: "00000000-0000-0000-0000-000000000000"
     depends_on:
       api: {condition: service_healthy}
 
@@ -240,6 +279,7 @@ networks:
     name: masonwing-dev-edge
 
 volumes:
+  artifact-spool:
   postgres-data:
   temporal-data:
   storage-data:

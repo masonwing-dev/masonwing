@@ -8,4 +8,9 @@ publish.workspace = true
 [dependencies]
 masonwing-contracts.workspace = true
 masonwing-kernel.workspace = true
-
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }

@@ -8,4 +8,41 @@ publish.workspace = true
 [dependencies]
 masonwing-contracts.workspace = true
 masonwing-kernel.workspace = true
+serde_json.workspace = true
+
+# Opt-in SDK compatibility probe; not a qualified production adapter.
+[features]
+local-temporal-tests = ["dep:temporalio-client", "dep:temporalio-sdk", "dep:temporalio-macros", "dep:temporalio-common", "dep:temporalio-workflow", "dep:futures"]
+
+[dependencies.futures]
+version = "0.3"
+optional = true
+
+[dependencies.temporalio-common]
+version = "=1.0.0"
+optional = true
+
+[dependencies.temporalio-workflow]
+version = "=1.0.0"
+optional = true
+
+[dependencies.temporalio-client]
+version = "=1.0.0"
+optional = true
+
+[dependencies.temporalio-sdk]
+version = "=1.0.0"
+optional = true
+
+[dependencies.temporalio-macros]
+version = "=1.0.0"
+optional = true
+
+[dev-dependencies]
+tokio.workspace = true
+uuid.workspace = true
+
+[[test]]
+name = "cancellation_temporal"
+required-features = ["local-temporal-tests"]
 
